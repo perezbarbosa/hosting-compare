@@ -1,0 +1,89 @@
+[
+    {
+        "hosting_type": "wordpress",
+        "plan": "basic",
+        "website_number": "1",
+        "payment": [
+            {
+                "months": "12",
+                "price_month": "5.34",
+                "save": "33%"
+            }
+        ],
+        "price_currency": "€",
+        "ssl": "free",
+        "domain": "year",
+        "disk": [
+            {
+                "size": "50",
+                "unit": "gb",
+                "type": "ssd"
+            } 
+        ],
+        "parked_domains": "5",
+        "subdomains": "25",
+        "support": [
+            "chat",
+            "email",
+            "ticket"
+        ]
+    },
+    {
+        "hosting_type": "wordpress",
+        "plan": "basic",
+        "website_number": "1",
+        "payment": [
+            {
+                "months": "24",
+                "price_month": "4.45",
+                "save": "41%"
+            }
+        ],
+        "price_currency": "€",
+        "ssl": "free",
+        "domain": "year",
+        "disk": [
+            {
+                "size": "50",
+                "unit": "gb",
+                "type": "ssd"
+            } 
+        ],
+        "parked_domains": "5",
+        "subdomains": "25",
+        "support": [
+            "chat",
+            "email",
+            "ticket"
+        ]
+    },
+    {
+        "hosting_type": "wordpress",
+        "plan": "basic",
+        "website_number": "1",
+        "payment": [
+            {
+                "months": "36",
+                "price_month": "3.55",
+                "save": "50%"
+            }
+        ],
+        "price_currency": "€",
+        "ssl": "free",
+        "domain": "year",
+        "disk": [
+            {
+                "size": "50",
+                "unit": "gb",
+                "type": "ssd"
+            } 
+        ],
+        "parked_domains": "5",
+        "subdomains": "25",
+        "support": [
+            "chat",
+            "email",
+            "ticket"
+        ]
+    }
+]

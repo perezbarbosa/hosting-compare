@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform : AWS:Serverless-2016-10-31
+
+Description: |
+  A HelloWorld app
+
+Resources:
+
+  # The function name we use as a reference
+  HelloWorldLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.7
+      # As we are in the same folder, we just use the file.handler name
+      Handler: hello-world-lambda.handler
+      Events:
+        # Eventsource: https://docs.aws.amazon.com/es_es/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html
+        Api:
+          Type: Api
+          Properties:
+            Path: /hello-lambda
+            Method: post
+
+  # The function name we use as a reference
+  HelloWorldApiGW:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.7
+      # As we are in the same folder, we just use the file.handler name
+      Handler: hello-world-api-gw.handler
+      Events:
+        # Eventsource: https://docs.aws.amazon.com/es_es/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html
+        Api:
+          Type: Api
+          Properties:
+            Path: /hello-api-gw
+            Method: post
