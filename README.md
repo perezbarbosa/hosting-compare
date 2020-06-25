@@ -26,7 +26,7 @@ https://wireframepro.mockflow.com/
 - You can have a template.yml file in a parent's folder, and use *CodeUri* attribute to reference to the lambda's folder with the code. This way you can have multiple lambda functions started and listening together, but defined in different folders
 - There's a limitation (maybe a misunderstood feature) for AWS SAM API Gateway with POST httpd method, which requires a format for the input event in order to be able to process it by the lambda function. That's why in the hello-world folder there are two examples.
 
-- Running the Lambda function with a POST payload locally
+**Running the Lambda function with a POST payload locally**
 
 ```
 # cd /path/to/lambda/folder
@@ -37,7 +37,7 @@ sam local invoke HelloWorldLambda -e payload.json
 
 ```
 
-- Expose the lambda function through local API gateway
+**Expose the lambda function through local API gateway**
 
 ```
 # cd /path/to/lambda/folder
