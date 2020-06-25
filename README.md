@@ -29,26 +29,26 @@ https://wireframepro.mockflow.com/
 - Running the Lambda function with a POST payload locally
 
 ```
-    # cd /path/to/lambda/folder
-    cd lambda/hello-world
+# cd /path/to/lambda/folder
+cd lambda/hello-world
 
-    # Test the lambda function running it directly without exposing a thing
-    sam local invoke HelloWorldLambda -e payload.json
+# Test the lambda function running it directly without exposing a thing
+sam local invoke HelloWorldLambda -e payload.json
 
 ```
 
 - Expose the lambda function through local API gateway
 
 ```
-    # cd /path/to/lambda/folder
-    cd lambda/hello-world
+# cd /path/to/lambda/folder
+cd lambda/hello-world
 
-    # Start local API Gateway exposing hello-world function via its yaml template. Debug optional.
-    # IMPORTANT: Each change to the template.yaml requires a sam restart
-    sam local start-api --debug
+# Start local API Gateway exposing hello-world function via its yaml template. Debug optional.
+# IMPORTANT: Each change to the template.yaml requires a sam restart
+sam local start-api --debug
 
-    # Make a call to the lambda function via its API Gateway exposed port
-    curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/hello-api-gw -d @payload.json
+# Make a call to the lambda function via its API Gateway exposed port
+curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/hello-api-gw -d @payload.json
 ```
 
 ## SAM Template resources
