@@ -6,18 +6,44 @@ https://wireframepro.mockflow.com/
 
 ## Local env
 
-**Requisites**
+### Requisites
 
-* Docker
+- Docker
+- [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) to enable API Gateway and Lambda local services with no need for an AWS account, yet
 
-* [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) to enable API Gateway and Lambda local services with no need for an AWS account, yet
+```
+brew tap aws/tap
+brew install aws-sam-cli
+```
 
-    brew tap aws/tap
-    brew install aws-sam-cli
+- [amazon/dynamodb-local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.Docker.html) Docker image to use a local DynamoDB database 
+- The AWS lambda function we want to test, has to have its own [SAM Template file](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md) [+info](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html), named *template.yml* defining the lambda function. See lambda/hello-world folder for a real world example
 
-* [amazon/dynamodb-local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.Docker.html) Docker image to use a local DynamoDB database 
+### Spinning up the local env from scratch
 
-* The AWS lambda function we want to test, has to have its own [SAM Template file](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md) [+info](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html), named *template.yml* defining the lambda function. See lambda/hello-world folder for a real world example
+Start the dynamodb container. This will be a *foreground* process so you may want to run it in a second terminal window
+```
+cd local-env
+local-env$ docker-compose up
+```
+
+Create the dynamodb table
+```
+local-env$ ./create-dynamodb-table.sh
+```
+
+Expose all API Gateway endpoints to our lambda functions. This will be a *foreground* process so you may want to run it in a second terminal window
+```
+local-env$ sam local start-api --debug --docker-network hosting-compare
+```
+
+Populate the dynamodb table with sample data
+```
+local-env$ cd ../sample-data/
+sample-data$ curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/save/sample_data -d @bluehost.json
+```
+
+Browse localhost:PORT TODO
 
 
 ## Hello-World example, working with AWS SAM
