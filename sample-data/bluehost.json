@@ -7,7 +7,7 @@
             "S": "Wordpress"
          },
         "HostingPlan": {
-            "S": "Basic"
+            "S": "Wordpress Basic"
         },
         "WebNumber": {
             "S": "1"
@@ -34,9 +34,6 @@
                 }
             ]
         },
-        "MinPriceMonth": {
-            "N": "3.55"
-        },
         "Currency": {
             "S": "€"
         },
@@ -58,6 +55,71 @@
         },
         "Subdomains": {
             "N": "25"
+        },
+        "Support": {
+            "SS": [
+                "chat",
+                "email",
+                "ticket"
+            ]
+        }
+    },
+    {
+        "Provider": {
+            "S": "BlueHost"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+         },
+        "HostingPlan": {
+            "S": "Wordpress Plus"
+        },
+        "WebNumber": {
+            "S": "Unlimited"
+         },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "7.14" },
+                        "Save": { "N": "33" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "6.24" },
+                        "Save": { "N": "41" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "36" },
+                        "PriceMonth": { "N": "5.34" },
+                        "Save": { "N": "50" }
+                    }
+                }
+            ]
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "Ssl": {
+            "S": "free"
+        },
+        "Domain": {
+            "S": "year"
+        },
+        "Disk": {
+            "M": {
+                "Size": { "S": "Unlimited" },
+                "Unit": { "S": "GB" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "ParkedDomains": {
+            "S": "Unlimited"
+        },
+        "Subdomains": {
+            "S": "Unlimited"
         },
         "Support": {
             "SS": [

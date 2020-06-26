@@ -12,8 +12,8 @@
 TABLE_NAME="HostingList"
 PARTITION_NAME="Provider"
 PARTITION_TYPE="S"
-SORT_NAME="MinPriceMonth"
-SORT_TYPE="N"
+SORT_NAME="HostingPlan"
+SORT_TYPE="S"
 
 aws dynamodb create-table \
     --table-name $TABLE_NAME \
