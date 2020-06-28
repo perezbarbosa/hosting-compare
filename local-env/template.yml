@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform : AWS:Serverless-2016-10-31
+
+Description: |
+  Local Environment setup
+
+Resources:
+
+  ## LOCAL ENVIRONMENT ##
+  #######################
+
+  SaveSampleData:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../lambda/save_sample_data
+      Runtime: python3.7
+      Handler: save_sample_data.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /save/sample_data
+            Method: post
