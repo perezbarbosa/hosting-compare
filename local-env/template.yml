@@ -21,3 +21,16 @@ Resources:
           Properties:
             Path: /save/sample_data
             Method: post
+
+  SearchByHostingType:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../lambda/search_by_hosting_type
+      Runtime: python3.7
+      Handler: search_by_hosting_type.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: post
