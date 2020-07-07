@@ -62,12 +62,14 @@
         "Subdomains": {
             "N": "25"
         },
-        "Support": {
-            "SS": [
-                "chat",
-                "email",
-                "ticket"
-            ]
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
         }
     },
     {
@@ -133,12 +135,14 @@
         "Subdomains": {
             "S": "Unlimited"
         },
-        "Support": {
-            "SS": [
-                "chat",
-                "email",
-                "ticket"
-            ]
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
         }
     }
 ]

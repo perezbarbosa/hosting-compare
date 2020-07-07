@@ -30,17 +30,17 @@ def get_hosting_list(out, hosting_type):
             KeyConditionExpression=Key('HostingType').eq(hosting_type)
         )
         out['body'] = {
-            'message': response,
+            'message': response['Items'],
         }
     except:
         print("Unexpected error")
         pprint(sys.exc_info())
         out['statusCode'] = 500
         out['body'] = {
-            'message': 'Unexpected error',
+            'message': 'Cannot query the database',
         }
     
-    return out, response
+    return out, response['Items']
 
 
 def handler(event, context):
