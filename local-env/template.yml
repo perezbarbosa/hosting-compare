@@ -1,36 +1,66 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform : AWS:Serverless-2016-10-31
-
 Description: |
   Local Environment setup
+
+# How to start with AWS SAM and this file template here
+#   https://www.youtube.com/watch?v=CIdUU6rNdk4
+# Official documentation here
+#   https://github.com/awslabs/serverless-application-model
+# Policy templates to be used here: 
+#   https://github.com/awslabs/serverless-application-model/blob/develop/samtranslator/policy_templates_data/policy_templates.json
+
+Globals:
+  Function:
+    Runtime: python3.7
+  Api:
+    Cors:
+      AllowMethods: "'POST,OPTIONS'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+
+Parameters:
+  DynamoTableName:
+    Description: DynamoDB Table Name
+    Type: String
+    Default: HostingList
+
 
 Resources:
 
   ## LOCAL ENVIRONMENT ##
   #######################
 
-  SaveSampleData:
+  saveSampleDataFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ../lambda/save_sample_data
-      Runtime: python3.7
       Handler: save_sample_data.handler
       Events:
-        Api:
+        SaveSampleData:
           Type: Api
           Properties:
             Path: /save/sample_data
             Method: post
 
-  SearchByHostingType:
+  ## PRODUCTION LAMBDAS ##
+  ########################
+
+  searchByHostingTypeFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ../lambda/search_by_hosting_type
-      Runtime: python3.7
       Handler: search_by_hosting_type.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref: DynamoTableName
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref: DynamoTableName
       Events:
-        Api:
+        SearchByHostingType:
           Type: Api
           Properties:
             Path: /search
             Method: post
+    

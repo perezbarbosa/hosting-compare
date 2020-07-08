@@ -2,13 +2,25 @@ import boto3
 from boto3.dynamodb.conditions import Key
 import json
 from pprint import pprint
+import os
 import sys
 
 
+def get_environment_variables():
+    """Gets the environment variables"""
+    if os.environ['TABLE_NAME']:
+        table_name = os.environ['TABLE_NAME']
+    else:
+        table_name = 'HostingList'
+    return table_name
+
+
 def init_return_variable():
+    """Initializes the lambda return variable"""
     out = {}
     out['headers'] = {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'
         }
     out['statusCode'] = 200
     out['body'] = {
@@ -17,10 +29,22 @@ def init_return_variable():
     return out
 
 
-def get_hosting_list(out, hosting_type):
+def get_hosting_list(table_name, out, hosting_type):
+    """Gets the list of hosting plans.
+
+    Args:
+        table_name: The DynamoDB table to use
+        out: The lambda return variable, to be updated accordingly
+        hosting_type: The HostingType GSI to search by. Case sensitive. e.g. Wordpress
+        TODO: filter ?
+    
+    Returns:
+        The list of hosting plans
+    """
+
     # Using a local docker network to access to dynamodb container by its name
     dynamodb = boto3.resource('dynamodb', endpoint_url="http://dynamodb:8000")
-    table = dynamodb.Table('HostingList')
+    table = dynamodb.Table(table_name)
 
     try:
         # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.04.html
@@ -44,10 +68,14 @@ def get_hosting_list(out, hosting_type):
 
 
 def handler(event, context):
-    """ Loads sample data into local database
+    """ Queries the database to get the list of hosting plans
+            ACCESS PATTERN "Search By Hosting Type"
+                GSI Partition Key = Hosting Type
+                GSI Sort Key      = min price
 
         Expects to receive a payload with at least a HostingType and optionally filters to apply.
         No need to include the "filter" key at all if no filters are being send.
+        TODO: What about "price between X and Y"???
         {
             "HostingType": "string",
             "Filter": {
@@ -59,6 +87,7 @@ def handler(event, context):
         }
     """
 
+    table_name = get_environment_variables()
     out = init_return_variable()
 
     ## Get data from json 
@@ -73,6 +102,6 @@ def handler(event, context):
         pass
 
     ## Query DynamoDB
-    out, response = get_hosting_list(out, hosting_type) 
+    out, response = get_hosting_list(table_name, out, hosting_type) 
 
     return out
