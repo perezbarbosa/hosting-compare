@@ -1,5 +1,6 @@
 import boto3
 from boto3.dynamodb.conditions import Key
+import decimal
 import json
 from pprint import pprint
 import os
@@ -20,13 +21,23 @@ def init_return_variable():
     out = {}
     out['headers'] = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*'
+        # TODO: This CORS policy is just for local testing. Remember to remove it for prod!
+        'Access-Control-Allow-Origin':'*',
         }
     out['statusCode'] = 200
     out['body'] = {
         'message': 'I have been initialized',
     }
     return out
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+      if isinstance(o, decimal.Decimal):
+        if o % 1 > 0:
+          return float(o)
+        else:
+          return int(o)
+      return super(DecimalEncoder, self).default(o)
 
 
 def get_hosting_list(table_name, out, hosting_type):
@@ -42,9 +53,15 @@ def get_hosting_list(table_name, out, hosting_type):
         The list of hosting plans
     """
 
+    # DEBUG
+    # pprint("1: {} 2: {} 3: {}".format(table_name,out,hosting_type))
+
     # Using a local docker network to access to dynamodb container by its name
     dynamodb = boto3.resource('dynamodb', endpoint_url="http://dynamodb:8000")
     table = dynamodb.Table(table_name)
+
+    # DEBUG
+    # pprint(table)
 
     try:
         # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.04.html
@@ -53,9 +70,28 @@ def get_hosting_list(table_name, out, hosting_type):
             IndexName='HostingType-index',
             KeyConditionExpression=Key('HostingType').eq(hosting_type)
         )
-        out['body'] = {
-            'message': response['Items'],
-        }
+
+        # Lambda has to return objets that can be serialized by json.dumps, otherwise lambda will return an error
+        # https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html
+
+
+        # DEBUG
+        testa = [{ "A": "B" }]
+        pprint("AAAAAA")
+        pprint(json.dumps(response['ResponseMetadata']))
+        pprint("AAAAAA")
+
+        out['statusCode'] = response['ResponseMetadata']['HTTPStatusCode']
+        out['body'] = json.dumps({
+            # We need to convert from decimal (dynamodb) to float (json compatible)
+            #   Lambda response has to be an object compliant with json.dumps
+            #'message': testa,
+            'message': response['Items']
+        }, cls=DecimalEncoder)
+        #out['headers'] = {**out['headers'], **response['ResponseMetadata']['HTTPHeaders']}
+
+        pprint("HEADERS")
+        pprint(out['headers'])
     except:
         print("Unexpected error")
         pprint(sys.exc_info())
@@ -64,7 +100,7 @@ def get_hosting_list(table_name, out, hosting_type):
             'message': 'Cannot query the database',
         }
     
-    return out, response['Items']
+    return out, response
 
 
 def handler(event, context):
@@ -93,6 +129,7 @@ def handler(event, context):
     ## Get data from json 
 
     if event['body']:
+        pprint(event['body'])
         body = json.loads(event['body'])
 
     hosting_type=body['HostingType']
