@@ -1,5 +1,8 @@
 [
     {
+        "HostingId": {
+            "S": "bluehost_wordpress_basic"
+        },
         "Provider": {
             "S": "BlueHost"
         },
@@ -7,7 +10,7 @@
             "S": "Wordpress"
          },
         "HostingPlan": {
-            "S": "Wordpress Basic"
+            "S": "Basic"
         },
         "WebNumber": {
             "S": "1"
@@ -34,6 +37,9 @@
                 }
             ]
         },
+        "MinPaymentMonth": {
+            "N": "3.55"
+        },
         "Currency": {
             "S": "€"
         },
@@ -56,15 +62,20 @@
         "Subdomains": {
             "N": "25"
         },
-        "Support": {
-            "SS": [
-                "chat",
-                "email",
-                "ticket"
-            ]
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
         }
     },
     {
+        "HostingId": {
+            "S": "bluehost_wordpress_plus"
+        },
         "Provider": {
             "S": "BlueHost"
         },
@@ -72,7 +83,7 @@
             "S": "Wordpress"
          },
         "HostingPlan": {
-            "S": "Wordpress Plus"
+            "S": "Plus"
         },
         "WebNumber": {
             "S": "Unlimited"
@@ -99,6 +110,9 @@
                 }
             ]
         },
+        "MinPaymentMonth": {
+            "N": "5.34"
+        },
         "Currency": {
             "S": "€"
         },
@@ -121,12 +135,14 @@
         "Subdomains": {
             "S": "Unlimited"
         },
-        "Support": {
-            "SS": [
-                "chat",
-                "email",
-                "ticket"
-            ]
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
         }
     }
 ]
