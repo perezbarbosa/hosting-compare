@@ -20,10 +20,10 @@
 TABLE_NAME="HostingList"
 PARTITION_NAME="HostingId"
 PARTITION_TYPE="S"
-SORT_NAME="MinPaymentMonth"
+SORT_NAME="PaymentMonthMin"
 SORT_TYPE="N"
 
-echo "**** CREATE-TABLE *****"
+printf "**** CREATE-TABLE *****\n"
 aws dynamodb create-table \
     --table-name $TABLE_NAME \
     --attribute-definitions \
@@ -44,13 +44,13 @@ aws dynamodb create-table \
 
 GSI_HOSTINGTYPE_PARTITION_NAME="HostingType"
 GSI_HOSTINGTYPE_PARTITION_TYPE="S"
-GSI_HOSTINGTYPE_SORT_NAME="MinPaymentMonth"
+GSI_HOSTINGTYPE_SORT_NAME="PaymentMonthMin"
 GSI_HOSTINGTYPE_SORT_TYPE="N"
 GSI_HOSTINGTYPE_KEY=[{AttributeName=HostingType,KeyType=HASH},{AttributeName=MinPaymentMonth,KeyType=RANGE}]
 # TODO: Use projection INCLUDE instead of ALL to include only the attr we need
 GSI_HOSTINGTYPE_ATTR=["Provider","HostingPlan","WebNumber","Payment","Currency"]
 
-echo "**** CREATE-GSI $GSI_HOSTINGTYPE_PARTITION_NAME *****"
+printf "**** CREATE-GSI $GSI_HOSTINGTYPE_PARTITION_NAME *****\n"
 aws dynamodb update-table \
     --table-name $TABLE_NAME \
     --attribute-definitions \

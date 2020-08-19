@@ -3,17 +3,29 @@
         "HostingId": {
             "S": "bluehost_wordpress_basic"
         },
-        "Provider": {
-            "S": "BlueHost"
+        "Currency": {
+            "S": "€"
         },
-        "HostingType": {
-            "S": "Wordpress"
-         },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "50" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "5"
+        },
+        "DomainSubdomain": {
+            "N": "25"
+        },
         "HostingPlan": {
             "S": "Basic"
         },
-        "WebNumber": {
-            "S": "1"
+        "HostingType": {
+            "S": "Wordpress"
          },
         "Payment": {
             "L": [
@@ -37,30 +49,11 @@
                 }
             ]
         },
-        "MinPaymentMonth": {
+        "PaymentMonthMin": {
             "N": "3.55"
         },
-        "Currency": {
-            "S": "€"
-        },
-        "Ssl": {
-            "S": "free"
-        },
-        "Domain": {
-            "S": "year"
-        },
-        "Disk": {
-            "M": {
-                "Size": { "N": "50" },
-                "Unit": { "S": "GB" },
-                "Type": { "S": "SSD" }
-            }
-        },
-        "ParkedDomains": {
-            "N": "5"
-        },
-        "Subdomains": {
-            "N": "25"
+        "Provider": {
+            "S": "BlueHost"
         },
         "SupportChat": {
             "S": "true"
@@ -70,23 +63,41 @@
         },
         "SupportTicket": {
             "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "S": "1"
         }
     },
     {
         "HostingId": {
             "S": "bluehost_wordpress_plus"
         },
-        "Provider": {
-            "S": "BlueHost"
+        "Currency": {
+            "S": "€"
         },
-        "HostingType": {
-            "S": "Wordpress"
-         },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "99999" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
         "HostingPlan": {
             "S": "Plus"
         },
-        "WebNumber": {
-            "S": "Unlimited"
+        "HostingType": {
+            "S": "Wordpress"
          },
         "Payment": {
             "L": [
@@ -110,30 +121,11 @@
                 }
             ]
         },
-        "MinPaymentMonth": {
+        "PaymentMonthMin": {
             "N": "5.34"
         },
-        "Currency": {
-            "S": "€"
-        },
-        "Ssl": {
-            "S": "free"
-        },
-        "Domain": {
-            "S": "year"
-        },
-        "Disk": {
-            "M": {
-                "Size": { "S": "Unlimited" },
-                "Unit": { "S": "GB" },
-                "Type": { "S": "SSD" }
-            }
-        },
-        "ParkedDomains": {
-            "S": "Unlimited"
-        },
-        "Subdomains": {
-            "S": "Unlimited"
+        "Provider": {
+            "S": "BlueHost"
         },
         "SupportChat": {
             "S": "true"
@@ -143,6 +135,12 @@
         },
         "SupportTicket": {
             "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
         }
     }
 ]

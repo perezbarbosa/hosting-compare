@@ -1,0 +1,296 @@
+[
+    {
+        "HostingId": {
+            "S": "hostinger_web_sencillo"
+        },
+        "Backup": {
+            "S": "false"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "1"
+        },
+        "DatabaseSizeGB": {
+            "N": "3"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainsParked": {
+            "N": "2"
+        },
+        "DomainSubdomain": {
+            "N": "2"
+        },
+        "EmailAccount": {
+            "N": "1"
+        },
+        "HostingPlan": {
+            "S": "Sencillo"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "7.99" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "1.95" },
+                        "Save": { "N": "76" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "1.45" },
+                        "Save": { "N": "82" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "0.80" },
+                        "Save": { "N": "90" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "0.80"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinger_web_premium"
+        },
+        "Backup": {
+            "S": "semanales"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DatabaseSizeGB": {
+            "N": "3"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "100"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Premium"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "11.95" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "3.75" },
+                        "Save": { "N": "69" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "2.95" },
+                        "Save": { "N": "75" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "2.15" },
+                        "Save": { "N": "82" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "2.15"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinger_web_empresarial"
+        },
+        "Backup": {
+            "S": "diarias"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DatabaseSizeGB": {
+            "N": "3"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "100" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "100"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Empresarial"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "15.95" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "5.85" },
+                        "Save": { "N": "63" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "4.45" },
+                        "Save": { "N": "72" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "3.45" },
+                        "Save": { "N": "78" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "3.45"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    }
+]

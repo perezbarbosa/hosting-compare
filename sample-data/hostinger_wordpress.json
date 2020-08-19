@@ -1,0 +1,278 @@
+[
+    {
+        "HostingId": {
+            "S": "hostinger_wordpress_starter"
+        },
+        "Backup": {
+            "S": "weekly"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "100"
+        },
+        "HostingPlan": {
+            "S": "Starter"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "11.95" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "3.75" },
+                        "Save": { "N": "69" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "2.95" },
+                        "Save": { "N": "75" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "2.15" },
+                        "Save": { "N": "82" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "2.15"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "100"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinger_wordpress_premium"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "100" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "100"
+        },
+        "HostingPlan": {
+            "S": "Premium"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "29.00" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "12.95" },
+                        "Save": { "N": "55" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "9.95" },
+                        "Save": { "N": "66" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "7.45" },
+                        "Save": { "N": "74" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "7.45"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "300"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinger_wordpress_business"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "140" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "100"
+        },
+        "HostingPlan": {
+            "S": "Business"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "58.00" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "22.95" },
+                        "Save": { "N": "60" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "17.95" },
+                        "Save": { "N": "69" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "14.95" },
+                        "Save": { "N": "74" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "14.95"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "300"
+        }
+    }
+]
