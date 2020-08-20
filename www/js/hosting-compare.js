@@ -60,9 +60,13 @@ function Normalize(item) {
     }
 }
 
+function GetHtmlForProviderLogo(provider) { 
+    return "<img src='img/" + provider + ".png' alt='" + provider + "' />"
+ }
+
 function GetHtmlStartForAColumn() {
     return "\
-    <div style='float: left; margin-right: 20px;'> \
+    <div style='float: left; width: 25%;'> \
         <ul class='list-unstyled mt-3 mb-4'>"
 }
 
@@ -72,12 +76,33 @@ function GetHtmlEndForAColumn() {
     </div> <!--// float: left -->"
 }
 
+function compare(one, two) {
+    const a = one.PriceMonth;
+    const b = two.PriceMonth;
+  
+    let comparison = 0;
+    if (a < b) {
+      comparison = 1;
+    } else if (a > b) {
+      comparison = -1;
+    }
+    return comparison;
+}
+
 function GetHtmlPrice(currency, min_price, all_prices) {
-    return "\
-    <div style='float:right;'> \
-        <h1 class='card-title pricing-card-title'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1> \
-        <button type='button' class='btn btn-lg btn-block btn-primary'>Contact us</button> \
-    </div>"
+    var html = "<h1 class='card-title pricing-card-title'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
+    if (all_prices) {
+        all_prices_sorted = all_prices.sort(compare)
+        for (price of all_prices_sorted) {
+            html = html + "<li>" + price.Months + " meses por " + price.PriceMonth + currency + "/mes"
+            if (price.Save) {
+                html = html + " (-" + price.Save + "%)"
+            }
+            html = html + "</li>"
+        }
+    }
+    html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
+    return html
 }
 
 function GetHtmlDiskSize(size, type) {
@@ -158,6 +183,25 @@ function GetHtmlSSL(ssl) {
     return html
 }
 
+/* Source: https://uxwing.com/
+ */
+function GetHtmlForSupport(chat, email, phone, ticket) {
+    var html = "<li>Soporte Técnico</li><li>"
+    if (chat) {
+        html = html + "<img src='img/chat.svg' alt='Chat de soporte en línea' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (email) {
+        html = html + "<img src='img/email.svg' alt='Soporte via email' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (phone) {
+        html = html + "<img src='img/phone.svg' alt='Soporte telefónico' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (ticket) {
+        html = html + "<img src='img/phone.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
+    }
+    return html + "</li>"
+}
+
 /* Creates the HTML code for an item and returns the HTML code ready to be used
  *
  * Params:
@@ -175,14 +219,11 @@ function SetHtmlForAnItem(item) {
     <div class='card mb-4 shadow-sm'> \
         <div class='card-header'> \
             <h4 class='my-0 font-weight-normal' style='float:right'>" + hosting_type + " " + hosting_plan + "</h4> \
-            <h4 class='my-0 font-weight-normal' style='float:left'>" + provider + "</h4> \
+            <h4 class='my-0 font-weight-normal' style='float:left'>" + GetHtmlForProviderLogo(provider) + "</h4> \
         </div> \
         <div class='card-body'>"
-    
-    // CULUMN RIGHT (PRICE)
-    html = html + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['PaymentMonth'])
 
-    // COLUMN - SITES, DISK, DATABASES
+    // COLUMN 1 - SITES, DISK, DATABASES
     html = html + GetHtmlStartForAColumn()
     html = html 
             + GetHtmlWebNumber(item['WebNumber'])
@@ -190,11 +231,23 @@ function SetHtmlForAnItem(item) {
             + GetHtmlDatabase(item['DatabaseNumber'], item['DatabaseSizeGB'])
     html = html + GetHtmlEndForAColumn()
 
-    // COLUMN - DOMAINS, SSL
+    // COLUMN 2 - DOMAINS, SSL
     html = html + GetHtmlStartForAColumn()
     html = html 
             + GetHtmlDomains(item['DomainIncluded'], item['DomainsParked'], item['DomainSubdomain'])
             + GetHtmlSSL(item['Ssl'])
+    html = html + GetHtmlEndForAColumn()
+
+    // COLUMN 3 - SUPPORT
+    html = html + GetHtmlStartForAColumn()
+    html = html 
+            + GetHtmlForSupport(item['SupportChat'], item['SupportEmail'], item['SupportPhone'], item['SupportTicket'])
+    html = html + GetHtmlEndForAColumn()
+
+    // COLUMN 4 - PRICE
+    html = html + GetHtmlStartForAColumn()
+    html = html 
+            + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['Payment'])
     html = html + GetHtmlEndForAColumn()
 
     // END
