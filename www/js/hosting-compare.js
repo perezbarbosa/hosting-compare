@@ -66,7 +66,7 @@ function GetHtmlForProviderLogo(provider) {
 
 function GetHtmlStartForAColumn() {
     return "\
-    <div style='float: left; width: 25%;'> \
+    <div class='col-sm'> \
         <ul class='list-unstyled mt-3 mb-4'>"
 }
 
@@ -89,17 +89,36 @@ function compare(one, two) {
     return comparison;
 }
 
+function GetCorrectLanguageForMonths(months) {
+    var text = "m"
+    if (months == "1") {
+        text = "mes"
+    }
+    return months + " " + text
+}
+
 function GetHtmlPrice(currency, min_price, all_prices) {
-    var html = "<h1 class='card-title pricing-card-title'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
+    var html = "<h1 class='card-title pricing-card-title text-right'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
     if (all_prices) {
         all_prices_sorted = all_prices.sort(compare)
+        html = html + "<div class='container' style='margin-bottom: 10px;'><div class='row justify-content-center' style='white-space: nowrap; overflow: hidden;'>"
         for (price of all_prices_sorted) {
-            html = html + "<li>" + price.Months + " meses por " + price.PriceMonth + currency + "/mes"
-            if (price.Save) {
-                html = html + " (-" + price.Save + "%)"
-            }
-            html = html + "</li>"
+            html = html + "<div class='col' style='background-color: rgba(0, 0, 0, 0.03); border-bottom: 1px solid rgba(0, 0, 0, 0.125);'>" + GetCorrectLanguageForMonths(price.Months) + "</div>"
         }
+        html = html + "<div class='w-100'></div>"
+        for (price of all_prices_sorted) {
+            html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'><strong>" + price.PriceMonth + currency + "</strong></div>"
+        }
+        html = html + "<div class='w-100'></div>"
+        for (price of all_prices_sorted) {
+            if (price.Save) {
+                html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'>-" + price.Save + "%</div>"
+            }
+            else {
+                html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'></div>"
+            }
+        }
+        html = html + "</div></div>"
     }
     html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
     return html
@@ -186,7 +205,7 @@ function GetHtmlSSL(ssl) {
 /* Source: https://uxwing.com/
  */
 function GetHtmlForSupport(chat, email, phone, ticket) {
-    var html = "<li>Soporte Técnico</li><li>"
+    var html = "<li style='margin-top: 10px;'>Soporte técnico</li><li>"
     if (chat) {
         html = html + "<img src='img/chat.svg' alt='Chat de soporte en línea' style='height: 25px; margin-right: 15px;' />"
     }
@@ -221,7 +240,8 @@ function SetHtmlForAnItem(item) {
             <h4 class='my-0 font-weight-normal' style='float:right'>" + hosting_type + " " + hosting_plan + "</h4> \
             <h4 class='my-0 font-weight-normal' style='float:left'>" + GetHtmlForProviderLogo(provider) + "</h4> \
         </div> \
-        <div class='card-body'>"
+        <div class='container card-body'> \
+            <div class='row'>"
 
     // COLUMN 1 - SITES, DISK, DATABASES
     html = html + GetHtmlStartForAColumn()
@@ -236,15 +256,10 @@ function SetHtmlForAnItem(item) {
     html = html 
             + GetHtmlDomains(item['DomainIncluded'], item['DomainsParked'], item['DomainSubdomain'])
             + GetHtmlSSL(item['Ssl'])
-    html = html + GetHtmlEndForAColumn()
-
-    // COLUMN 3 - SUPPORT
-    html = html + GetHtmlStartForAColumn()
-    html = html 
             + GetHtmlForSupport(item['SupportChat'], item['SupportEmail'], item['SupportPhone'], item['SupportTicket'])
     html = html + GetHtmlEndForAColumn()
 
-    // COLUMN 4 - PRICE
+    // COLUMN 3 - PRICE
     html = html + GetHtmlStartForAColumn()
     html = html 
             + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['Payment'])
@@ -252,7 +267,8 @@ function SetHtmlForAnItem(item) {
 
     // END
     html = html + "\
-        </div> <!--// card-body --> \
+            </div> <!--// row --> \
+        </div> <!--// container card-body --> \
     </div>"
 
     return html
