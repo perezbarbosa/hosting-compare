@@ -1,12 +1,38 @@
+//$(document).ready(function() {
+//    $('#btnSun').click(SearchByHostingType);
+//});
+
 $(document).ready(function() {
-    $('#btnSun').click(SearchByHostingType);
+    $('#btnSun').click(function() {
+        $('#filter').submit(function(e) {
+            e.preventDefault();
+            var datastring = $( this ).serializeArray();
+            SearchByHostingType(datastring);
+        }) 
+    })
 });
 
-function SearchByHostingType() {
+function SearchByHostingType(data) {
     /*  https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/welcome.html#welcome_web
     */
+
+    // Get values from formulary. We can use field.name as a switch-case
+    // TODO: We need to validate the form
+    var hosting_type
+//  var hosting_type = []
+    $(data).each(function(i, field){
+ //       switch(field.name) {
+ //           case 'HostingType':
+ //               hosting_type.push(field.value)
+ //               break;
+ //           default:
+ //               alert('ERROR getting params from form: '+field.name)
+ //       }
+        hosting_type = field.value
+    });
+
     var payload={
-        "HostingType": "Wordpress"
+        "HostingType": hosting_type
     };
 
     var result="";
