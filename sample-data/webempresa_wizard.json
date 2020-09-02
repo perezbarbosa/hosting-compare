@@ -1,0 +1,197 @@
+[
+    {
+        "HostingId": {
+            "S": "webempresa_wizard_planwpfacilm"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "2"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "2"
+        },
+        "HostingPlan": {
+            "S": "Plan WpFácil M"
+        },
+        "HostingType": {
+            "S": "Wizard"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "10.75" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "10.75"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "2"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_wizard_planwpfacill"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "5"
+        },
+        "HostingPlan": {
+            "S": "Plan WpFácil L"
+        },
+        "HostingType": {
+            "S": "Wizard"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "16.58" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "16.58"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "5"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_wizard_planwpfacilxl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "10"
+        },
+        "HostingPlan": {
+            "S": "Plan WpFácil XL"
+        },
+        "HostingType": {
+            "S": "Wizard"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "24.91" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "24.91"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "10"
+        }
+    }
+]

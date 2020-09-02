@@ -1,0 +1,197 @@
+[
+    {
+        "HostingId": {
+            "S": "webempresa_web_planm"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "2"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "2"
+        },
+        "HostingPlan": {
+            "S": "Plan M"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "6.58" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "6.58"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "2"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_web_planl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Plan L"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "12.41" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "12.41"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_web_planxl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Plan XL"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "20.75" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "20.75"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    }
+]
