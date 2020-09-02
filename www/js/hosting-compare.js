@@ -242,7 +242,7 @@ function GetHtmlForSupport(chat, email, phone, ticket) {
         html = html + "<img src='img/phone.svg' alt='Soporte telefónico' style='height: 25px; margin-right: 15px;' />"
     }
     if (ticket) {
-        html = html + "<img src='img/phone.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
+        html = html + "<img src='img/ticket.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
     }
     return html + "</li>"
 }
