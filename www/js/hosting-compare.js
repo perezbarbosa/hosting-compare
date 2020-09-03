@@ -87,7 +87,8 @@ function Normalize(item) {
 }
 
 function GetHtmlForProviderLogo(provider) { 
-    return "<img src='img/" + provider + ".png' alt='" + provider + "' />"
+    var provider_no_blanks = provider.replace(/\s/g, '');
+    return "<img src='img/" + provider_no_blanks + ".png' alt='" + provider + "' />"
  }
 
 function GetHtmlStartForAColumn() {
