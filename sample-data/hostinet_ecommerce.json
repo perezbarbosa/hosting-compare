@@ -1,0 +1,362 @@
+[
+    {
+        "HostingId": {
+            "S": "hostinet_ecommerce_1"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "DomainSubdomain": {
+            "N": "5"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "1"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "PrestaShop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "3.66" },
+                        "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "3.44" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "3.20" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "3.20"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinet_ecommerce_2"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "DomainSubdomain": {
+            "N": "5"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "2"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "PrestaShop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "4.33" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "4.06" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "3.79" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "3.79"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinet_ecommerce_3"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "15" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "DomainSubdomain": {
+            "N": "5"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "3"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "PrestaShop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "5.05" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "4.73" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "4.42" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "4.42"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinet_web_ssd4"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeede"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "15" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "3"
+        },
+        "HostingType": {
+            "S": "Web"
+        },
+        "HostingTypeExternal": {
+            "S": "SSD"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "6.38" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "5.98" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "5.58" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "5.58"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    }
+]
