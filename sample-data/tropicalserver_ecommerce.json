@@ -1,0 +1,312 @@
+[
+    {
+        "HostingId": {
+            "S": "tropicalserver_ecommerce_s"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "1"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "S"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "Prestashop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "9.91" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "9.91"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_ecommerce_m"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "2"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "M"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "Prestashop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "14.91" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "14.91"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "2"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_ecommerce_l"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "25" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "L"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "Prestashop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "24.91" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "24.91"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "5"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_ecommerce_xl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "50" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "XL"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "Prestashop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "37.41" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "37.41"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "10"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_ecommerce_xxl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "100" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "XXL"
+        },
+        "HostingType": {
+            "S": "Ecommerce"
+        },
+        "HostingTypeExternal": {
+            "S": "Prestashop"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "37.41" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "37.41"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "10"
+        }
+    }
+]

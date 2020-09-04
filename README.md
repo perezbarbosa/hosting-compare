@@ -24,7 +24,7 @@ brew install aws-sam-cli
 Start the dynamodb container. This will be a *foreground* process so you may want to run it in a second terminal window
 ```
 cd local-env
-local-env$ docker-compose up
+local-env$ docker-compose up -d
 ```
 
 Create the dynamodb table
@@ -41,6 +41,11 @@ Populate the dynamodb table with sample data
 ```
 local-env$ cd ../sample-data/
 sample-data$ curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/save/sample_data -d @bluehost.json
+```
+
+Or just populate with all files within sample-data folder
+```
+sample-data$ for file in $(ls); do curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/save/sample_data -d @${file}; done
 ```
 
 Browse localhost:PORT TODO

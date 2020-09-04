@@ -71,23 +71,14 @@ def get_hosting_list(table_name, out, hosting_type):
             KeyConditionExpression=Key('HostingType').eq(hosting_type)
         )
 
-        # Lambda has to return objets that can be serialized by json.dumps, otherwise lambda will return an error
-        # https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html
-
-
-        # DEBUG
-        testa = [{ "A": "B" }]
-        pprint("AAAAAA")
-        pprint(json.dumps(response['ResponseMetadata']))
-        pprint("AAAAAA")
-
-        out['statusCode'] = response['ResponseMetadata']['HTTPStatusCode']
+        # We need to convert from decimal (dynamodb) to float (json compatible)
+        # Lambda response has to be an object compliant with json.dumps
+        #   https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html
         out['body'] = json.dumps({
-            # We need to convert from decimal (dynamodb) to float (json compatible)
-            #   Lambda response has to be an object compliant with json.dumps
-            #'message': testa,
             'message': response['Items']
         }, cls=DecimalEncoder)
+
+        out['statusCode'] = response['ResponseMetadata']['HTTPStatusCode']
         #out['headers'] = {**out['headers'], **response['ResponseMetadata']['HTTPHeaders']}
 
         pprint("HEADERS")

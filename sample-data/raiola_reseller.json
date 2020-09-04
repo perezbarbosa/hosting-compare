@@ -1,0 +1,310 @@
+[
+    {
+        "HostingId": {
+            "S": "raiola_reseller_comienzo"
+        },
+        "Backup": {
+            "S": "periodic"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "50" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Comienzo"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "HostingTypeExternal": {
+            "S": "Reseller SSD"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "39.95" }                
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "36.62" },
+                    "Save": { "N": "8.33" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "36.62"
+        },
+        "Provider": {
+            "S": "Raiola Networks"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "Users": {
+            "N": "30"
+        },
+        "WebNumber": {
+            "N": "30"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "raiola_reseller_base"
+        },
+        "Backup": {
+            "S": "periodic"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "100" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Base"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "HostingTypeExternal": {
+            "S": "Reseller SSD"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "59.95" }                
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "54.95" },
+                    "Save": { "N": "8.33" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "54.95"
+        },
+        "Provider": {
+            "S": "Raiola Networks"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "Users": {
+            "N": "50"
+        },
+        "WebNumber": {
+            "N": "50"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "raiola_reseller_profesional"
+        },
+        "Backup": {
+            "S": "periodic"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "200" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Profesional"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "HostingTypeExternal": {
+            "S": "Reseller SSD"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "79.95" }                
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "73.28" },
+                    "Save": { "N": "8.33" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "73.28"
+        },
+        "Provider": {
+            "S": "Raiola Networks"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "Users": {
+            "N": "70"
+        },
+        "WebNumber": {
+            "N": "70"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "raiola_reseller_avanzado"
+        },
+        "Backup": {
+            "S": "periodic"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "300" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Avanzado"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "HostingTypeExternal": {
+            "S": "Reseller SSD"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "99.95" }                
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "91.62" },
+                    "Save": { "N": "8.33" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "91.62"
+        },
+        "Provider": {
+            "S": "Raiola Networks"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "Users": {
+            "N": "90"
+        },
+        "WebNumber": {
+            "N": "90"
+        }
+    }
+]

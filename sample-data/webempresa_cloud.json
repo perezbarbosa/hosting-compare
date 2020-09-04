@@ -1,0 +1,206 @@
+[
+    {
+        "HostingId": {
+            "S": "webempresa_cloud_planm"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "2" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Plan M"
+        },
+        "HostingType": {
+            "S": "Cloud"
+        },
+        "HostingTypeExternal": {
+            "S": "Elastic"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "8.25" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "8.25"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_cloud_planl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "3" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Plan L"
+        },
+        "HostingType": {
+            "S": "Cloud"
+        },
+        "HostingTypeExternal": {
+            "S": "Elastic"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "16.58" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "16.58"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "webempresa_cloud_planxl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "4" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "DomainsParked": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "Plan XL"
+        },
+        "HostingType": {
+            "S": "Cloud"
+        },
+        "HostingTypeExternal": {
+            "S": "Elastic"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "20.75" }
+                }
+            }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "20.75"
+        },
+        "Provider": {
+            "S": "Webempresa"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    }
+]

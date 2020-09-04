@@ -1,12 +1,38 @@
+//$(document).ready(function() {
+//    $('#btnSun').click(SearchByHostingType);
+//});
+
 $(document).ready(function() {
-    $('#btnSun').click(SearchByHostingType);
+    $('#btnSun').click(function() {
+        $('#filter').submit(function(e) {
+            e.preventDefault();
+            var datastring = $( this ).serializeArray();
+            SearchByHostingType(datastring);
+        }) 
+    })
 });
 
-function SearchByHostingType() {
+function SearchByHostingType(data) {
     /*  https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/welcome.html#welcome_web
     */
+
+    // Get values from formulary. We can use field.name as a switch-case
+    // TODO: We need to validate the form
+    var hosting_type
+//  var hosting_type = []
+    $(data).each(function(i, field){
+ //       switch(field.name) {
+ //           case 'HostingType':
+ //               hosting_type.push(field.value)
+ //               break;
+ //           default:
+ //               alert('ERROR getting params from form: '+field.name)
+ //       }
+        hosting_type = field.value
+    });
+
     var payload={
-        "HostingType": "Wordpress"
+        "HostingType": hosting_type
     };
 
     var result="";
@@ -18,21 +44,19 @@ function SearchByHostingType() {
         headers: { 'Content-Type': 'application/json' },
         crossDomain: true,
         success:function(data) {
-            alert(data);
-            result = data; 
+            //alert(JSON.stringify(data, null, 2));
             var div_result=document.getElementById("test-result");
-            if (result.length == 0) {
+            if (data.length == 0) {
                 // NO results
                 div_result.innerHTML="No se han encontrado resultados"
             } else {
-                for (item in result['message']) {
-                    var hosting_plan = item['HostingPlan']
-                    var provider = item['Provider']
-                    var min_payment_month = item['MinPaymentMonth']
-                    var html = "<h1>"+ provider + " | " + hosting_plan + " | " + min_payment_month + "</h1>"
+                var items = data['message']
+                var html = ""
+                for (var k in items) {
                     // https://www.w3schools.com/jquery/jquery_dom_add.asp
-                    div_result.innerHTML=html
+                    var html = html  + SetHtmlForAnItem(items[k])
                 }
+                div_result.innerHTML=html
             }
         },
         error:function (xhr, ajaxOptions, thrownError){
@@ -48,47 +72,231 @@ function SearchByHostingType() {
    });
 }
 
-function SearchByHostingTypeJquery() {
-    /*  https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/welcome.html#welcome_web
-    */
-    var payload={
-        "HostingType": "Wordpress"
-    };
+/* Transforms the input value to a human friendly one
+ *
+ * Params:
+ *   item: the pa
+ */
+function Normalize(item) {
+    if (item == "99999") {
+        return "<strong>Ilimitado</strong>"
+    } 
+    else {
+        return item
+    }
+}
 
-    var result="";
-    $.post({
-        url: "http://127.0.0.1:3000/search",
-        data: JSON.stringify(payload),
-        dataType: 'json',
-        headers: { 'Content-Type': 'application/json' },
-        crossDomain: true,
-        success:function(data) {
-            alert(data);
-            result = data; 
-            var div_result=document.getElementById("test-result");
-            if (result.length == 0) {
-                // NO results
-                div_result.innerHTML="No se han encontrado resultados"
-            } else {
-                for (item in result) {
-                    var hosting_plan = item['HostingPlan']
-                    var provider = item['Provider']
-                    var min_payment_month = item['MinPaymentMonth']
-                    var html = "<h1>"+ provider + " | " + hosting_plan + " | " + min_payment_month + "</h1>"
-                    // https://www.w3schools.com/jquery/jquery_dom_add.asp
-                    div_result.innerHTML=html
-                }
-            }
-        },
-        error:function (xhr, ajaxOptions, thrownError){
-            alert(xhr.status);
-            var div_result=document.getElementById("test-result");
-            if(xhr.status==404) {
-                div_result.innerHTML = 'Item not found'
+function GetHtmlForProviderLogo(provider) { 
+    var provider_no_blanks = provider.replace(/\s/g, '');
+    return "<img src='img/" + provider_no_blanks + ".png' alt='" + provider + "' />"
+ }
+
+function GetHtmlStartForAColumn() {
+    return "\
+    <div class='col-sm'> \
+        <ul class='list-unstyled mt-3 mb-4'>"
+}
+
+function GetHtmlEndForAColumn() {
+    return "\
+        </ul> \
+    </div> <!--// float: left -->"
+}
+
+function compare(one, two) {
+    const a = one.PriceMonth;
+    const b = two.PriceMonth;
+  
+    let comparison = 0;
+    if (a < b) {
+      comparison = 1;
+    } else if (a > b) {
+      comparison = -1;
+    }
+    return comparison;
+}
+
+function GetCorrectLanguageForMonths(months) {
+    var text = "m"
+    if (months == "1") {
+        text = "mes"
+    }
+    return months + " " + text
+}
+
+function GetHtmlPrice(currency, min_price, all_prices) {
+    var html = "<h1 class='card-title pricing-card-title text-right'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
+    if (all_prices) {
+        all_prices_sorted = all_prices.sort(compare)
+        html = html + "<div class='container' style='margin-bottom: 10px;'><div class='row justify-content-center' style='white-space: nowrap; overflow: hidden;'>"
+        for (price of all_prices_sorted) {
+            html = html + "<div class='col' style='background-color: rgba(0, 0, 0, 0.03); border-bottom: 1px solid rgba(0, 0, 0, 0.125);'>" + GetCorrectLanguageForMonths(price.Months) + "</div>"
+        }
+        html = html + "<div class='w-100'></div>"
+        for (price of all_prices_sorted) {
+            html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'><strong>" + price.PriceMonth + currency + "</strong></div>"
+        }
+        html = html + "<div class='w-100'></div>"
+        for (price of all_prices_sorted) {
+            if (price.Save) {
+                html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'>-" + price.Save + "%</div>"
             }
             else {
-                div_result.innerHTML = 'That Unexpected error'
+                html = html + "<div class='col' style='border-bottom: 1px solid rgba(0, 0, 0, 0.125);'></div>"
             }
         }
-   });
+        html = html + "</div></div>"
+    }
+    html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
+    return html
+}
+
+function GetHtmlDiskSize(size, type) {
+    var html = ""
+    if (size) {
+        html = "<li>" + Normalize(size) + " GB de espacio en disco"
+        if (type) {
+            html = html + " " + type
+        }
+        html = html + "</li>"
+    }
+    return html
+}
+
+function GetHtmlWebNumber(web_number) {
+    var html = ""
+    if (web_number){
+        html = "<li>" + Normalize(web_number) + " sitios web</li>"
+    }
+    return html
+}
+
+function GetHtmlDatabase(number, size) {
+    var html = ""
+    if (number) {
+        html = "<li>" + Normalize(number) + " bases de datos"
+        if (size) {
+            html = html + " de " + Normalize(size) + " GB"
+        }
+        html = html + "</li>"
+    } 
+    return html
+}
+
+function GetHtmlDomains(included, parked, subdomain) {
+    var html = ""
+    if (included) {
+        html = "<li>"
+        switch(included) {
+            case "year":
+                html = html + "Dominio 1r año gratis</li>"
+                break;
+            case "true":
+                html = html + "Dominio incluido para siempre</li>"
+                break;
+            default:
+                html = html + "Dominio no incluido</li>"
+                break;
+        }
+
+        if (parked) {
+            html = html + "<li>" + Normalize(parked) + " dominios parqueados</li>"
+        }
+
+        if (subdomain) {
+            html = html + "<li>" + Normalize(subdomain) + " subdominios</li>"
+        }
+    }
+    return html
+}
+
+function GetHtmlSSL(ssl) {
+    var html = ""
+    if (ssl) {
+        html = "<li>"
+        switch(ssl) {
+            case "year":
+                html = html + "Certificado SSL 1r año gratis</li>"
+                break;
+            case "true":
+                html = html + "Certificado SSL incluido</li>"
+                break;
+            default:
+                html = html + "Certificado SSL no incluido</li>"
+                break;
+        }
+    }
+    return html
+}
+
+/* Source: https://uxwing.com/
+ */
+function GetHtmlForSupport(chat, email, phone, ticket) {
+    var html = "<li style='margin-top: 10px;'>Soporte técnico</li><li>"
+    if (chat) {
+        html = html + "<img src='img/chat.svg' alt='Chat de soporte en línea' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (email) {
+        html = html + "<img src='img/email.svg' alt='Soporte via email' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (phone) {
+        html = html + "<img src='img/phone.svg' alt='Soporte telefónico' style='height: 25px; margin-right: 15px;' />"
+    }
+    if (ticket) {
+        html = html + "<img src='img/ticket.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
+    }
+    return html + "</li>"
+}
+
+/* Creates the HTML code for an item and returns the HTML code ready to be used
+ *
+ * Params:
+ *   item: the json object including all item attributes
+ */
+function SetHtmlForAnItem(item) {
+    var currency = item['Currency']
+    var hosting_plan = item['HostingPlan']
+    var hosting_type = item['HostingType']
+    var provider = item['Provider']
+    var min_payment_month = item['PaymentMonthMin']
+
+    // HEADER
+    var html = "\
+    <div class='card mb-4 shadow-sm'> \
+        <div class='card-header'> \
+            <h4 class='my-0 font-weight-normal' style='float:right'>" + hosting_type + " " + hosting_plan + "</h4> \
+            <h4 class='my-0 font-weight-normal' style='float:left'>" + GetHtmlForProviderLogo(provider) + "</h4> \
+        </div> \
+        <div class='container card-body'> \
+            <div class='row'>"
+
+    // COLUMN 1 - SITES, DISK, DATABASES
+    html = html + GetHtmlStartForAColumn()
+    html = html 
+            + GetHtmlWebNumber(item['WebNumber'])
+            + GetHtmlDiskSize(item['DiskSizeGB']['Size'], item['DiskSizeGB']['Type'])
+            + GetHtmlDatabase(item['DatabaseNumber'], item['DatabaseSizeGB'])
+    html = html + GetHtmlEndForAColumn()
+
+    // COLUMN 2 - DOMAINS, SSL
+    html = html + GetHtmlStartForAColumn()
+    html = html 
+            + GetHtmlDomains(item['DomainIncluded'], item['DomainsParked'], item['DomainSubdomain'])
+            + GetHtmlSSL(item['Ssl'])
+            + GetHtmlForSupport(item['SupportChat'], item['SupportEmail'], item['SupportPhone'], item['SupportTicket'])
+    html = html + GetHtmlEndForAColumn()
+
+    // COLUMN 3 - PRICE
+    html = html + GetHtmlStartForAColumn()
+    html = html 
+            + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['Payment'])
+    html = html + GetHtmlEndForAColumn()
+
+    // END
+    html = html + "\
+            </div> <!--// row --> \
+        </div> <!--// container card-body --> \
+    </div>"
+
+    return html
 }

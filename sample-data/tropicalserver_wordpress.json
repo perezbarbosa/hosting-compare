@@ -1,0 +1,238 @@
+[
+    {
+        "HostingId": {
+            "S": "tropicalserver_wordpress_s"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "1"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "S"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "7.41" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "7.41"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_wordpress_m"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "2"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "M"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "10.75" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "10.75"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "2"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_wordpress_l"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "L"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "18.25" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "13.99"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "5"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_wordpress_xl"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "40" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "XL"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "27.41" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "27.41"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "10"
+        }
+    }
+]

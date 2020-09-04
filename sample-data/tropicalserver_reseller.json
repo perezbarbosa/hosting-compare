@@ -1,0 +1,322 @@
+[
+    {
+        "HostingId": {
+            "S": "tropicalserver_reseller_basico"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "Básico"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "29" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "24.08" },
+                    "Save": {"N": "16"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "22.87" },
+                    "Save": {"N": "21"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "20.94" },
+                    "Save": {"N": "27"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "20.94"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "10"
+        },
+        "Users": {
+            "N": "10"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_reseller_avanzado"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "Avanzado"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "49" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "40.75" },
+                    "Save": {"N": "16"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "38.7" },
+                    "Save": {"N": "21"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "35.38" },
+                    "Save": {"N": "27"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "35.38"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "25"
+        },
+        "Users": {
+            "N": "25"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_reseller_premium"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "50" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "Premium"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "99" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "82.41" },
+                    "Save": {"N": "16"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "78.29" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "71.5" },
+                    "Save": {"N": "27"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "71.5"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "50"
+        },
+        "Users": {
+            "N": "50"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "tropicalserver_reseller_dedicado"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "100" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "HostingPlan": {
+            "S": "Dedicado"
+        },
+        "HostingType": {
+            "S": "Reseller"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "179" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "149.16" },
+                    "Save": {"N": "16"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "147.87" },
+                    "Save": {"N": "17"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "147.19" },
+                    "Save": {"N": "17"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "147.19"
+        },
+        "Provider": {
+            "S": "Tropical Server"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "100"
+        },
+        "Users": {
+            "N": "100"
+        }
+    }
+]

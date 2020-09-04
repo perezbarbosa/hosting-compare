@@ -1,0 +1,254 @@
+[
+    {
+        "HostingId": {
+            "S": "hostinet_wordpress_1"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "5" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "1"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "5" },
+                        "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "4.68" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "4.36" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "4.36"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinet_wordpress_2"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "5"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "2"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "6.33" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "5.94" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "5.54" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "5.54"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "hostinet_wordpress_3"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "LiteSpeede"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "10"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "15" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "true"
+        },
+        "DomainSubdomain": {
+            "N": "99999"
+        },
+        "EmailAccount": {
+            "N": "99999"
+        },
+        "HostingPlan": {
+            "S": "3"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "12" },
+                    "PriceMonth": {"N": "9.53" },
+                    "Save": {"N": "20"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "8.93" },
+                    "Save": {"N": "25"}
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "8.34" },
+                    "Save": {"N": "30"}
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "8.34"
+        },
+        "Provider": {
+            "S": "Hostinet"
+        },
+        "SupportPhone": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    }
+]
