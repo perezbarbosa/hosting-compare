@@ -1,0 +1,239 @@
+[
+    {
+        "HostingId": {
+            "S": "siteground_wordpress_startup"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached + Supercached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "10" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "HostingPlan": {
+            "S": "StartUp"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "17.99" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "5.99" },
+                        "Save": {"N": "54" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "8.99" },
+                    "Save": {"N": "13.5" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "9.09" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "5.99"
+        },
+        "Provider": {
+            "S": "Siteground"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "siteground_wordpress_growbig"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached + Supercached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "20" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "HostingPlan": {
+            "S": "GrowBig"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "27.99" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "9.99" },
+                        "Save": {"N": "56.6" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "13.99" },
+                    "Save": {"N": "26.6" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "16.09" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "9.99"
+        },
+        "Provider": {
+            "S": "Siteground"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    },
+    {
+        "HostingId": {
+            "S": "siteground_wordpress_gogeek"
+        },
+        "Backup": {
+            "S": "daily"
+        },
+        "Cache": {
+            "S": "Memcached + Supercached"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "99999"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "40" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "year"
+        },
+        "HostingPlan": {
+            "S": "GoGeek"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "39.99" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "13.99" },
+                        "Save": {"N": "60" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "24" },
+                    "PriceMonth": {"N": "19.99" },
+                    "Save": {"N": "38.6" }
+                    }
+                },
+                { "M": {
+                    "Months": { "N": "36" },
+                    "PriceMonth": {"N": "24.49" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "13.99"
+        },
+        "Provider": {
+            "S": "Siteground"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "WebNumber": {
+            "N": "99999"
+        }
+    }
+]
