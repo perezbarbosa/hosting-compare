@@ -127,43 +127,57 @@
 
       <div class="container">
 
-        <!--<button id="btnSun">Search!</button>-->
-        <form id="filter" action="#">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="HostingType" value="Wordpress" id="Wordpress">
-            <label class="form-check-label" for="Wordpress">
-              WordPress
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="HostingType" value="Web" id="Web">
-            <label class="form-check-label" for="Web">
-              Hosting web
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="HostingType" value="Reseller" id="Reseller">
-            <label class="form-check-label" for="Reseller">
-              Reseller
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="HostingType" value="Cloud" id="Cloud">
-            <label class="form-check-label" for="Cloud">
-              Hosting elástico (Cloud)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="HostingType" value="Wizard" id="Wizard">
-            <label class="form-check-label" for="Wizard">
-              Asistente de creación de páginas web
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary" id="btnSun">Search!</button>
-        </form>
+        <!-- FILTER SECTION -->
+        <div class='container card-body'>
+          <div class='row'>
 
+            <form id="filter" action="#">
+
+              <div class='col-sm'> <!-- Hosting Type -->
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="HostingType" value="Wordpress" id="Wordpress">
+                  <label class="form-check-label" for="Wordpress">
+                    WordPress
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="HostingType" value="Web" id="Web">
+                  <label class="form-check-label" for="Web">
+                    Hosting web
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="HostingType" value="Reseller" id="Reseller">
+                  <label class="form-check-label" for="Reseller">
+                    Reseller
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="HostingType" value="Cloud" id="Cloud">
+                  <label class="form-check-label" for="Cloud">
+                    Hosting elástico (Cloud)
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="HostingType" value="Wizard" id="Wizard">
+                  <label class="form-check-label" for="Wizard">
+                    Asistente de creación de páginas web
+                  </label>
+                </div>
+
+              </div> <!-- // Hosting Type -->
+
+              <button type="submit" class="btn btn-primary" id="btnSun">Search!</button>
+
+            </form>
+
+          </div> <!-- // container card-body -->
+        </div><!-- // row -->
 
         <div id="test-result"></div>
+
+        <!-- END FILTER SECTION -->
 
 
         <hr class="featurette-divider">
