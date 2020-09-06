@@ -21,15 +21,16 @@ brew install aws-sam-cli
 
 ### Spinning up the local env from scratch
 
-Start the dynamodb container. This will be a *foreground* process so you may want to run it in a second terminal window
+Start the dynamodb and aws-stepsfunctions containers
 ```
 cd local-env
 local-env$ docker-compose up -d
 ```
 
-Create the dynamodb table
+Create the dynamodb table and the state machine for step functions
 ```
 local-env$ ./create-dynamodb-table.sh
+local-env$ ./create-state-steps-function.sh
 ```
 
 Expose all API Gateway endpoints to our lambda functions. This will be a *foreground* process so you may want to run it in a second terminal window

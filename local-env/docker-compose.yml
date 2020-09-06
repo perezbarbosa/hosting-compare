@@ -8,6 +8,14 @@ services:
       - "8000:8000"
     networks:
       - local-network
+  
+  stepsfunctions:
+    image: amazon/aws-stepfunctions-local
+    container_name: stepsfunctions
+    ports:
+      - "8083:8083"
+    networks: 
+      - local-network
 
 networks:
   local-network:
