@@ -18,8 +18,8 @@ function SearchByHostingType(data) {
 
     // Get values from formulary. We can use field.name as a switch-case
     // TODO: We need to validate the form
-    var hosting_type
-    var monthly_price
+    var hosting_type = "WordPress"
+    var monthly_price = 9999
 //  var hosting_type = []
     $(data).each(function(i, field){
         switch(field.name) {
