@@ -19,20 +19,30 @@ function SearchByHostingType(data) {
     // Get values from formulary. We can use field.name as a switch-case
     // TODO: We need to validate the form
     var hosting_type
+    var min_price
+    var max_price
 //  var hosting_type = []
     $(data).each(function(i, field){
- //       switch(field.name) {
- //           case 'HostingType':
- //               hosting_type.push(field.value)
- //               break;
- //           default:
- //               alert('ERROR getting params from form: '+field.name)
- //       }
-        hosting_type = field.value
+        switch(field.name) {
+            case 'HostingType':
+                hosting_type = field.value
+                break;
+            case 'MinPrice':
+                min_price = field.value
+                break;
+            case 'MaxPrice':
+                max_price = field.value
+                break;
+            default:
+                alert('ERROR getting params from form: '+field.name)
+        }
+ //       hosting_type = field.value
     });
 
     var payload={
-        "HostingType": hosting_type
+        "HostingType": hosting_type,
+        "Min": min_price,
+        "Max": max_price
     };
 
     var result="";
@@ -198,7 +208,7 @@ function GetHtmlDomains(included, parked, subdomain) {
                 html = html + "Dominio 1r año gratis</li>"
                 break;
             case "true":
-                html = html + "Dominio incluido para siempre</li>"
+                html = html + "Dominio incluido</li>"
                 break;
             default:
                 html = html + "Dominio no incluido</li>"
@@ -270,7 +280,7 @@ function SetHtmlForAnItem(item) {
     var html = "\
     <div class='card mb-4 shadow-sm'> \
         <div class='card-header'> \
-            <h4 class='my-0 font-weight-normal' style='float:right'>" + hosting_type + " " + hosting_plan + "</h4> \
+            <h4 class='my-0 font-weight-normal' style='float:right'>Plan " + hosting_type + " " + hosting_plan + "</h4> \
             <h4 class='my-0 font-weight-normal' style='float:left'>" + GetHtmlForProviderLogo(provider) + "</h4> \
         </div> \
         <div class='container card-body'> \

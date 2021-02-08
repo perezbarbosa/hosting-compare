@@ -40,7 +40,7 @@ class DecimalEncoder(json.JSONEncoder):
       return super(DecimalEncoder, self).default(o)
 
 
-def get_hosting_list(table_name, out, hosting_type):
+def get_hosting_list(table_name, out, hosting_type, min, max):
     """Gets the list of hosting plans.
 
     Args:
@@ -68,7 +68,8 @@ def get_hosting_list(table_name, out, hosting_type):
         # https://stackoverflow.com/questions/35758924/how-do-we-query-on-a-secondary-index-of-dynamodb-using-boto3
         response = table.query(
             IndexName='HostingType-index',
-            KeyConditionExpression=Key('HostingType').eq(hosting_type)
+            KeyConditionExpression=
+                Key('HostingType').eq(hosting_type) & Key('PaymentMonthMin').between(min,max)
         )
 
         # We need to convert from decimal (dynamodb) to float (json compatible)
@@ -124,12 +125,14 @@ def handler(event, context):
         body = json.loads(event['body'])
 
     hosting_type=body['HostingType']
+    min_price=int(body['Min'])
+    max_price=int(body['Max'])
 
     if "Filter" in body:
         #TODO
         pass
 
     ## Query DynamoDB
-    out, response = get_hosting_list(table_name, out, hosting_type) 
+    out, response = get_hosting_list(table_name, out, hosting_type, min_price, max_price) 
 
     return out
