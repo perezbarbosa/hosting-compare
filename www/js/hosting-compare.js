@@ -18,21 +18,26 @@ function SearchByHostingType(data) {
 
     // Get values from formulary. We can use field.name as a switch-case
     // TODO: We need to validate the form
-    var hosting_type
+    var hosting_type = "WordPress"
+    var monthly_price = 9999
 //  var hosting_type = []
     $(data).each(function(i, field){
- //       switch(field.name) {
- //           case 'HostingType':
- //               hosting_type.push(field.value)
- //               break;
- //           default:
- //               alert('ERROR getting params from form: '+field.name)
- //       }
-        hosting_type = field.value
+        switch(field.name) {
+            case 'HostingType':
+                hosting_type = field.value
+                break;
+            case 'MonthlyPrice':
+                monthly_price = field.value
+                break;
+            default:
+                alert('ERROR getting params from form: '+field.name)
+        }
+ //       hosting_type = field.value
     });
 
     var payload={
-        "HostingType": hosting_type
+        "HostingType": hosting_type,
+        "MonthlyPrice": monthly_price,
     };
 
     var result="";
@@ -124,7 +129,7 @@ function GetCorrectLanguageForMonths(months) {
     return months + " " + text
 }
 
-function GetHtmlPrice(currency, min_price, all_prices) {
+function GetHtmlDetailedPrice(currency, min_price, all_prices) {
     var html = "<h1 class='card-title pricing-card-title text-right'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
     if (all_prices) {
         all_prices_sorted = all_prices.sort(compare)
@@ -151,10 +156,16 @@ function GetHtmlPrice(currency, min_price, all_prices) {
     return html
 }
 
+function GetHtmlSimplePrice(currency, min_price) {
+    var html = "<div class='card-title pricing-card-title text-right'>desde <span style='font-size: x-large; font-weight: bolder;'>" + min_price + currency + "</span>/ mes</div>"
+    html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
+    return html
+}
+
 function GetHtmlDiskSize(size, type) {
     var html = ""
     if (size) {
-        html = "<li>" + Normalize(size) + " GB de espacio en disco"
+        html = "<li>" + Normalize(size) + " GB de disco"
         if (type) {
             html = html + " " + type
         }
@@ -192,7 +203,7 @@ function GetHtmlDomains(included, parked, subdomain) {
                 html = html + "Dominio 1r año gratis</li>"
                 break;
             case "true":
-                html = html + "Dominio incluido para siempre</li>"
+                html = html + "Dominio incluido</li>"
                 break;
             default:
                 html = html + "Dominio no incluido</li>"
@@ -264,7 +275,7 @@ function SetHtmlForAnItem(item) {
     var html = "\
     <div class='card mb-4 shadow-sm'> \
         <div class='card-header'> \
-            <h4 class='my-0 font-weight-normal' style='float:right'>" + hosting_type + " " + hosting_plan + "</h4> \
+            <h4 class='my-0 font-weight-normal' style='float:right'>Plan " + hosting_type + " " + hosting_plan + "</h4> \
             <h4 class='my-0 font-weight-normal' style='float:left'>" + GetHtmlForProviderLogo(provider) + "</h4> \
         </div> \
         <div class='container card-body'> \
@@ -289,7 +300,7 @@ function SetHtmlForAnItem(item) {
     // COLUMN 3 - PRICE
     html = html + GetHtmlStartForAColumn()
     html = html 
-            + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['Payment'])
+            + GetHtmlSimplePrice(item['Currency'], item['PaymentMonthMin'])
     html = html + GetHtmlEndForAColumn()
 
     // END

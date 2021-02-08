@@ -30,6 +30,26 @@ def init_return_variable():
     }
     return out
 
+def get_monthly_price_value(monthly_price):
+    """
+    Returns the threshold value to limit the plan price
+
+    :param monthly_price: The HTML form monthly_price value
+    :return: Max MonthlyPrice to search for
+    """
+
+    if monthly_price == "Price0":
+        return 0
+    elif monthly_price == "Price5":
+        return 5
+    elif monthly_price == "Price10":
+        return 10
+    elif monthly_price == "Price25":
+        return 25
+    else:
+        return 9999
+
+
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
       if isinstance(o, decimal.Decimal):
@@ -40,17 +60,17 @@ class DecimalEncoder(json.JSONEncoder):
       return super(DecimalEncoder, self).default(o)
 
 
-def get_hosting_list(table_name, out, hosting_type):
-    """Gets the list of hosting plans.
+def get_hosting_list(table_name, out, hosting_type, max_price):
+    """
+    Gets the list of hosting plans.
 
-    Args:
-        table_name: The DynamoDB table to use
-        out: The lambda return variable, to be updated accordingly
-        hosting_type: The HostingType GSI to search by. Case sensitive. e.g. Wordpress
+    :param table_name: dynamoDB table to use
+    :param out: the lambda return variable, to be updated accordingly
+    :param hosting_type: the HostingType GSI to search by. Case sensitive. e.g. Wordpress
+    :param max_price: max price for the plan to search for.
         TODO: filter ?
     
-    Returns:
-        The list of hosting plans
+    :return: The list of hosting plans
     """
 
     # DEBUG
@@ -66,9 +86,11 @@ def get_hosting_list(table_name, out, hosting_type):
     try:
         # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.04.html
         # https://stackoverflow.com/questions/35758924/how-do-we-query-on-a-secondary-index-of-dynamodb-using-boto3
+        # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/customizations/dynamodb.html#dynamodb-conditions
         response = table.query(
             IndexName='HostingType-index',
-            KeyConditionExpression=Key('HostingType').eq(hosting_type)
+            KeyConditionExpression=
+                Key('HostingType').eq(hosting_type) & Key('PaymentMonthMin').lte(max_price)
         )
 
         # We need to convert from decimal (dynamodb) to float (json compatible)
@@ -124,12 +146,14 @@ def handler(event, context):
         body = json.loads(event['body'])
 
     hosting_type=body['HostingType']
+    monthly_price=body['MonthlyPrice']
+    monthly_price_value=get_monthly_price_value(monthly_price)
 
     if "Filter" in body:
         #TODO
         pass
 
     ## Query DynamoDB
-    out, response = get_hosting_list(table_name, out, hosting_type) 
+    out, response = get_hosting_list(table_name, out, hosting_type, monthly_price_value) 
 
     return out
