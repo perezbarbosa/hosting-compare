@@ -124,7 +124,7 @@ function GetCorrectLanguageForMonths(months) {
     return months + " " + text
 }
 
-function GetHtmlPrice(currency, min_price, all_prices) {
+function GetHtmlDetailedPrice(currency, min_price, all_prices) {
     var html = "<h1 class='card-title pricing-card-title text-right'>" + min_price + currency + "<small class='text-muted'>/ mes</small></h1>"
     if (all_prices) {
         all_prices_sorted = all_prices.sort(compare)
@@ -151,10 +151,16 @@ function GetHtmlPrice(currency, min_price, all_prices) {
     return html
 }
 
+function GetHtmlSimplePrice(currency, min_price) {
+    var html = "<div class='card-title pricing-card-title text-right'>desde <span style='font-size: x-large; font-weight: bolder;'>" + min_price + currency + "</span>/ mes</div>"
+    html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
+    return html
+}
+
 function GetHtmlDiskSize(size, type) {
     var html = ""
     if (size) {
-        html = "<li>" + Normalize(size) + " GB de espacio en disco"
+        html = "<li>" + Normalize(size) + " GB de disco"
         if (type) {
             html = html + " " + type
         }
@@ -289,7 +295,7 @@ function SetHtmlForAnItem(item) {
     // COLUMN 3 - PRICE
     html = html + GetHtmlStartForAColumn()
     html = html 
-            + GetHtmlPrice(item['Currency'], item['PaymentMonthMin'], item['Payment'])
+            + GetHtmlSimplePrice(item['Currency'], item['PaymentMonthMin'])
     html = html + GetHtmlEndForAColumn()
 
     // END
