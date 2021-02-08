@@ -19,19 +19,15 @@ function SearchByHostingType(data) {
     // Get values from formulary. We can use field.name as a switch-case
     // TODO: We need to validate the form
     var hosting_type
-    var min_price
-    var max_price
+    var monthly_price
 //  var hosting_type = []
     $(data).each(function(i, field){
         switch(field.name) {
             case 'HostingType':
                 hosting_type = field.value
                 break;
-            case 'MinPrice':
-                min_price = field.value
-                break;
-            case 'MaxPrice':
-                max_price = field.value
+            case 'MonthlyPrice':
+                monthly_price = field.value
                 break;
             default:
                 alert('ERROR getting params from form: '+field.name)
@@ -41,8 +37,7 @@ function SearchByHostingType(data) {
 
     var payload={
         "HostingType": hosting_type,
-        "Min": min_price,
-        "Max": max_price
+        "MonthlyPrice": monthly_price,
     };
 
     var result="";

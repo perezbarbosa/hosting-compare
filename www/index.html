@@ -154,12 +154,38 @@
                   <div class='row'>
                     <div style="padding-left: 20px;">
                       <strong>Precio mensual</strong>
-                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Max" name="MaxPrice" id="MaxPrice" style="width: 60px; margin-left: 10px; float: right;">
-                        <input class="form-control" type="text" placeholder="Min" name="MinPrice" id="MinPrice" style="width: 60px;">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="MonthlyPrice" value="Price0" id="Price0">
+                        <label class="form-check-label" for="Price0">
+                          Hosting gratuito
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="MonthlyPrice" value="Price5" id="Price5">
+                        <label class="form-check-label" for="Price5">
+                          Hasta 5€
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="MonthlyPrice" value="Price10" id="Price10">
+                        <label class="form-check-label" for="Price10">
+                          Hasta 10€
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="MonthlyPrice" value="Price25" id="Price25">
+                        <label class="form-check-label" for="Price25">
+                          Hasta 25€
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="MonthlyPrice" value="Price99" id="Price99">
+                        <label class="form-check-label" for="Price99">
+                          Todos
+                        </label>
                       </div>
                     </div>
-                  </div>
+                  </div> 
 
                   <!-- SEARCH BUTTON -->
                   <div class="text-center">
