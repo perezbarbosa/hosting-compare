@@ -116,6 +116,59 @@ def get_hosting_list(table_name, out, hosting_type, max_price):
     return out, response
 
 
+def scan_hosting_list(table_name, out, max_price):
+    """
+    Gets the whole list of hosting plans.
+
+    :param table_name: dynamoDB table to use
+    :param out: the lambda return variable, to be updated accordingly
+    :param max_price: max price for the plan to search for.
+        TODO: filter ?
+    
+    :return: The list of hosting plans
+    """
+
+    # Using a local docker network to access to dynamodb container by its name
+    dynamodb = boto3.resource('dynamodb', endpoint_url="http://dynamodb:8000")
+    table = dynamodb.Table(table_name)
+    scan_kwargs = {
+        'FilterExpression': Key('PaymentMonthMin').lte(max_price)
+    }
+    done = False
+    start_key = None
+
+    try:
+        # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.04.html#GettingStarted.Python.04.Scan
+        while not done:
+            if start_key:
+                scan_kwargs['ExclusiveStartKey'] = start_key
+            response = table.scan(**scan_kwargs)
+            start_key = response.get('LastEvaluatedKey', None)
+            done = start_key is None
+
+        # We need to convert from decimal (dynamodb) to float (json compatible)
+        # Lambda response has to be an object compliant with json.dumps
+        #   https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html
+        out['body'] = json.dumps({
+            'message': response['Items']
+        }, cls=DecimalEncoder)
+
+        out['statusCode'] = response['ResponseMetadata']['HTTPStatusCode']
+        #out['headers'] = {**out['headers'], **response['ResponseMetadata']['HTTPHeaders']}
+
+        pprint("HEADERS")
+        pprint(out['headers'])
+    except:
+        print("Unexpected error")
+        pprint(sys.exc_info())
+        out['statusCode'] = 500
+        out['body'] = {
+            'message': 'Cannot query the database',
+        }
+    
+    return out, response
+
+
 def handler(event, context):
     """ Queries the database to get the list of hosting plans
             ACCESS PATTERN "Search By Hosting Type"
@@ -149,11 +202,10 @@ def handler(event, context):
     monthly_price=body['MonthlyPrice']
     monthly_price_value=get_monthly_price_value(monthly_price)
 
-    if "Filter" in body:
-        #TODO
-        pass
-
-    ## Query DynamoDB
-    out, response = get_hosting_list(table_name, out, hosting_type, monthly_price_value) 
+    if hosting_type == "Todos":
+        out, response = scan_hosting_list(table_name, out, monthly_price_value)
+    else:
+        ## Query DynamoDB
+        out, response = get_hosting_list(table_name, out, hosting_type, monthly_price_value) 
 
     return out
