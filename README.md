@@ -4,6 +4,16 @@
 ## Mockup
 https://wireframepro.mockflow.com/
 
+## Architecture
+
+This project has the following parts:
+- Static code: html, css and javascript (mainly Bootstrap) hosted in a public S3 bucket
+- Backend code: python3 lambda functions callable via API Gateway
+- DynamoDB: to store the complete data for each hosting plan
+- MySQL-compatible database (MariaDB for the local env): to store basic data for each hosting plan. 
+
+A relational database is used in order to have advanced filter features. In a next iteration, the user will be able to get the complete list of details for any of the results, and that info will be retrieved from DynamoDB, as each plan has its own details so it would be hard to have a proper relational data model.  
+
 ## Local env
 
 ### Requisites

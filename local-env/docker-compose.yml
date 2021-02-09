@@ -5,9 +5,20 @@ services:
     image: amazon/dynamodb-local:latest
     container_name: dynamodb
     ports:
-      - "8000:8000"
+      - 8000:8000
     networks:
       - local-network
+  
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    networks:
+      - local-network
+    environment:
+      - MYSQL_DATABASE=quehosting
+      - MYSQL_ROOT_PASSWORD=quehosting.es
 
 networks:
   local-network:
