@@ -24,6 +24,19 @@ Parameters:
     Description: DynamoDB Table Name
     Type: String
     Default: HostingList
+  MySQLHost:
+    Type: String
+    Default: localhost
+  MySQLDBName:
+    Type: String
+    Default: quehosting
+  MySQLUser:
+    Type: String
+    Default: root
+  MySQLPass:
+    Type: String
+    Default: quehosting.es
+
 
 
 Resources:
@@ -42,25 +55,46 @@ Resources:
           Properties:
             Path: /save/sample_data
             Method: post
-
-  ## PRODUCTION LAMBDAS ##
-  ########################
-
-  searchByHostingTypeFunction:
+  
+  # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build.html#build-container-image
+  # https://aws.amazon.com/blogs/compute/using-container-image-support-for-aws-lambda-with-aws-sam/
+  searchByHostingTypeLocalFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ../lambda/search_by_hosting_type
-      Handler: search_by_hosting_type.handler
+      PackageType: Image
       Environment:
         Variables:
-          TABLE_NAME: !Ref: DynamoTableName
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName: !Ref: DynamoTableName
+          MYSQL_HOST: !Ref: MySQLHost
+          MYSQL_DB: !Ref: MySQLDBName
+          MYSQL_USER: !Ref: MySQLUser
+          MYSQL_PASS: !Ref: MySQLPass
       Events:
         SearchByHostingType:
           Type: Api
           Properties:
             Path: /search
             Method: post
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ../lambda/search
+      DockerTag: v1
+
+
+  ## PRODUCTION LAMBDAS ##
+  ########################
+
+#  searchByHostingTypeFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri: ../lambda/search
+#      Handler: search.handler
+#      Environment:
+#        Variables:
+#          TABLE_NAME: !Ref: DynamoTableName
+#      Events:
+#        SearchByHostingType:
+#          Type: Api
+#          Properties:
+#            Path: /search
+#            Method: post
     

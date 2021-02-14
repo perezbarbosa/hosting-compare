@@ -12,7 +12,7 @@ This project has the following parts:
 - DynamoDB: to store the complete data for each hosting plan
 - MySQL-compatible database (MariaDB for the local env): to store basic data for each hosting plan. 
 
-A relational database is used in order to have advanced filter features. In a next iteration, the user will be able to get the complete list of details for any of the results, and that info will be retrieved from DynamoDB, as each plan has its own details so it would be hard to have a proper relational data model.  
+A relational database is used in order to have advanced filter features. In a next iteration, the user will be able to get the complete list of details for any of the results, and that info will be retrieved from DynamoDB. As each plan has its own details would be hard to have a proper relational data model so no-sql is ideal here. 
 
 ## Local env
 
@@ -27,6 +27,7 @@ brew install aws-sam-cli
 ```
 
 - [amazon/dynamodb-local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.Docker.html) Docker image to use a local DynamoDB database 
+- mariadb Docker image
 - The AWS lambda function we want to test, has to have its own [SAM Template file](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md) [+info](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html), named *template.yml* defining the lambda function. See lambda/hello-world folder for a real world example
 
 ### Spinning up the local env from scratch
@@ -42,23 +43,34 @@ Create the dynamodb table
 local-env$ ./create-dynamodb-table.sh
 ```
 
+Create the mariadb tables
+```
+local-env$ ./create-mariadb-db.sh
+```
+
+Build local images. As now with a MySQL engine we need to import external python libraries, we need to build images first in order to install the missing library.
+The --use-container option allows to avoid conflicts with local python versions at build time.
+```
+local-env$ sam build --use-container
+```
+
 Expose all API Gateway endpoints to our lambda functions. This will be a *foreground* process so you may want to run it in a second terminal window
 ```
 local-env$ sam local start-api --debug --docker-network hosting-compare
 ```
 
-Populate the dynamodb table with sample data
+Populate the mariadb database with sample data
 ```
-local-env$ cd ../sample-data/
-sample-data$ curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/save/sample_data -d @bluehost.json
+local-env$ python3 populate_mariadb.py
 ```
 
-Or just populate with all files within sample-data folder
+Populate the dynamodb table with (the same) sample data
 ```
+local-env$ cd ../sample-data/
 sample-data$ for file in $(ls); do curl -H "Content-Type: application/json" -XPOST http://127.0.0.1:3000/save/sample_data -d @${file}; done
 ```
 
-Browse localhost:PORT TODO
+Browse the web just opening the index.html file in your browser
 
 
 ## Hello-World example, working with AWS SAM

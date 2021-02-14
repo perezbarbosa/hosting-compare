@@ -6,39 +6,39 @@ MYSQL_ROOT_PASSWORD=quehosting.es
 # Hosting Plans table
 create_hosting_table="CREATE TABLE IF NOT EXISTS hosting_plan(
 id INT AUTO_INCREMENT PRIMARY KEY,
-currency VARCHAR(3),
-database_number INT,
-database_size INT,
-disk_size INT,
-disk_type VARCHAR(255),
-domain_included VARCHAR(255),
-domain_subdomain INT,
-domains_parked INT,
-hosting_plan VARCHAR(255) NOT NULL,
-hosting_type VARCHAR(255) NOT NULL,
-partition_key VARCHAR(255) NOT NULL,
-payment_month_min DECIMAL(6,2) NOT NULL,
-provider VARCHAR(255) NOT NULL,
-ssl_certificate VARCHAR(255),
-web_number INT,
-INDEX (partition_key),
-INDEX (payment_month_min)
+Currency VARCHAR(3),
+DatabaseNumber INT,
+DatabaseSize INT,
+DiskSize INT,
+DiskType VARCHAR(255),
+DomainIncluded VARCHAR(255),
+DomainSubdomain INT,
+DomainsParked INT,
+HostingPlan VARCHAR(255) NOT NULL,
+HostingType VARCHAR(255) NOT NULL,
+PartitionKey VARCHAR(255) NOT NULL,
+PaymentMonthMin DECIMAL(6,2) NOT NULL,
+Provider VARCHAR(255) NOT NULL,
+SslCertificate VARCHAR(255),
+WebNumber INT,
+INDEX (PartitionKey),
+INDEX (PaymentMonthMin)
 ) ENGINE=INNODB;"
 
 # Support types table
 create_support_table="CREATE TABLE IF NOT EXISTS support(
 id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(255) NOT NULL
+Name VARCHAR(255) NOT NULL
 ) ENGINE=INNODB;"
 
 # HostingPlans - SupportTypes relationship
 create_hosting_support_table="CREATE TABLE IF NOT EXISTS hosting_support(
-hosting_plan_id INT,
-support_id INT,
-FOREIGN KEY (hosting_plan_id)
+HostingPlanId INT,
+SupportId INT,
+FOREIGN KEY (HostingPlanId)
     REFERENCES hosting_plan (id)
     ON DELETE CASCADE,
-FOREIGN KEY (support_id)
+FOREIGN KEY (SupportId)
     REFERENCES support (id)
     ON DELETE CASCADE
 ) ENGINE=INNODB;"

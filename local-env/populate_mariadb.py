@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import mysql.connector
 
@@ -94,21 +95,21 @@ def insert_into_database(db, entry):
         web_number = list(entry['WebNumber'].values())[0]
 
     sql = """INSERT INTO hosting_plan
-        (currency,
-        database_number,
-        database_size,
-        disk_size,
-        disk_type,
-        domain_included,
-        domain_subdomain,
-        domains_parked,
-        hosting_plan,
-        hosting_type,
-        partition_key,
-        payment_month_min,
-        provider,
-        ssl_certificate,
-        web_number)
+        (Currency,
+        DatabaseNumber,
+        DatabaseSize,
+        DiskSize,
+        DiskType,
+        DomainIncluded,
+        DomainSubdomain,
+        DomainsParked,
+        HostingPlan,
+        HostingType,
+        PartitionKey,
+        PaymentMonthMin,
+        Provider,
+        SslCertificate,
+        WebNumber)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     val = (currency,
         database_number,
@@ -126,16 +127,22 @@ def insert_into_database(db, entry):
         ssl_certificate,
         web_number)
 
-
-    cursor = db.cursor() 
-    cursor.execute(sql, val)
-    db.commit
-    print(cursor.rowcount, "record inserted.")
+    try:
+        cursor = db.cursor() 
+        cursor.execute(sql, val)
+        db.commit()
+        print(cursor.rowcount, "record inserted.")
+    except:
+        print("Cannot insert into database")
+        print(format(sys.exc_info()))
 
 
 current_dir = os.path.abspath(os.getcwd())
 files = get_hosting_data_files(current_dir)
-mydb = mysql_connect()
+try:
+    mydb = mysql_connect()
+except:
+    print("Cannot connect to database")
 for file in files:
     with open(current_dir + "/../sample-data/" + file,'r', encoding='utf-8') as f:
         print("[INFO] Working with file",format(file))

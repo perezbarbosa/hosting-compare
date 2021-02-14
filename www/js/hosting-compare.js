@@ -285,15 +285,15 @@ function SetHtmlForAnItem(item) {
     html = html + GetHtmlStartForAColumn()
     html = html 
             + GetHtmlWebNumber(item['WebNumber'])
-            + GetHtmlDiskSize(item['DiskSizeGB']['Size'], item['DiskSizeGB']['Type'])
-            + GetHtmlDatabase(item['DatabaseNumber'], item['DatabaseSizeGB'])
+            + GetHtmlDiskSize(item['DiskSize'], item['DiskType'])
+            + GetHtmlDatabase(item['DatabaseNumber'], item['DatabaseSize'])
     html = html + GetHtmlEndForAColumn()
 
     // COLUMN 2 - DOMAINS, SSL
     html = html + GetHtmlStartForAColumn()
     html = html 
             + GetHtmlDomains(item['DomainIncluded'], item['DomainsParked'], item['DomainSubdomain'])
-            + GetHtmlSSL(item['Ssl'])
+            + GetHtmlSSL(item['SslCertificate'])
             + GetHtmlForSupport(item['SupportChat'], item['SupportEmail'], item['SupportPhone'], item['SupportTicket'])
     html = html + GetHtmlEndForAColumn()
 
