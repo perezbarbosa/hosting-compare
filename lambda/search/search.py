@@ -87,24 +87,32 @@ def get_monthly_price_value(monthly_price):
         return 9999
 
 
-def validate(data):
+def validate_and_transform(data):
     """
     Validates that data included in 'data' follows the format and is not including weird stuff
     In order to do that we are iterating throught all items and validating no weird stuff is
     there. Weird data is discarted.
+    { POST: All keys are matching table attribute names }
 
     There are exceptional fields that require extra transformation
 
+    Current filter feature includes the following:
+    - HostingType
+    - MonthlyPrice
+
     :param data: the input form dictionary
-    :return: only valid data, in a dictionary, transformed when needed
+    :return: only valid data (and keys are matching table attribute names), in a dictionary, transformed when needed. 
     """
     data_ready = {}
     for key, value in data.items():
         # Only if has no special characters, we include it
         if value.isalnum():
-            # Additional transformations
+            # MonthlyPrice is actually checking the PaymentMonthMin table attribute
             if key == 'MonthlyPrice':
-                data_ready[key] = get_monthly_price_value(data['MonthlyPrice'])
+                data_ready['PaymentMonthMin'] = get_monthly_price_value(data['MonthlyPrice'])
+            # HostingType = all -> means no filter
+            elif key == 'HostingType' and value == 'Todos':
+                continue
             # By default, we just include the item
             else:
                 data_ready[key] = value
@@ -133,46 +141,61 @@ def mysql_connect(host, db, user, password):
     return conn
 
 
+def append_query_condition(column):
+    """
+    Prepares a query condition based on the attribute
+    As we have no way to know what kind of condition (lt, eq, like, etc.) we
+    need, we are creating a mapping here
+
+    :param column: the column name
+    :return out: a string to append to the query condition
+    """
+
+    # less or equal than
+    if column in ["PaymentMonthMin"]:
+        out = column + " <= %s"
+    # equal to
+    elif column in ["HostingType"]:
+        out = column + " = %s"
+    else:
+        # TODO
+        sys.exit("Unexpected error appending conditions")
+    
+    return out
+
 def prepare_query(data):
     """
     Prepares the SQL query according to data.
-    Current filter feature includes the following:
-    - HostingType
-    - MonthlyPrice
-
-    There's no need to worry about data transformations as were done by 'validate' method
+    {PRE: data includes valid data and all keys are matching table attributes}
 
     :param data: dictionary including all fields to filter
     :return: the query ready to be executed
     """
 
+    # TODO this is a default ORDER BY
+    sort = "PaymentMonthMin"
+
     sql = """SELECT {}
         FROM hosting_plan
-        WHERE HostingType = %s
-        AND PaymentMonthMin <= %s
-        ORDER BY PaymentMonthMin ASC
         """.format(
             ", ".join(DB_ATTRIBUTES)
         )
+
     args = []
-    args.append(data['HostingType'])
-    args.append(data['MonthlyPrice'])
 
-    #for key, value in data.items():
-        # Integer, less or equal than
-    #        sql = sql + " AND  <= %s"
-    #    if key in ["MonthlyPrice"]:
-    #        args.append(value)
-        # TODO add more conditions
-        # We may want to add conditions like string X = string Y
-
-    # TODO sort by
-    # We are sorting now by price, only, but in the future
-    # will accept sorting by any column, probably
-    # if "MonthlyPrice" in data:
-    #     sql = sql + " SORT BY " 
+    where = False
+    for key, value in data.items():
+        if where == False:
+            sql = sql + " WHERE " + append_query_condition(key)
+            where = True
+        else:
+            sql = sql + " AND " + append_query_condition(key)
+        args.append(value)
+  
+    sql = sql + " ORDER BY " + sort + " ASC"
 
     pprint(sql)
+    pprint(args)
 
     return sql, args
 
@@ -264,7 +287,7 @@ def handler(event, context):
         pprint(body)
         pprint("[DEBUG] -- end body")
 
-    filter_data = validate(body)
+    filter_data = validate_and_transform(body)
 
     out, response = get_hosting_list(out, filter_data) 
 
