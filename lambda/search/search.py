@@ -90,17 +90,24 @@ def get_monthly_price_value(monthly_price):
 def validate(data):
     """
     Validates that data included in 'data' follows the format and is not including weird stuff
-    This means we need to know exactly what data is going to be include there.
-    Current filter feature includes the following:
-    - HostingType
-    - MonthlyPrice
+    In order to do that we are iterating throught all items and validating no weird stuff is
+    there. Weird data is discarted.
 
-    :return: same data, in a dictionary, validated and transformed when needed
+    There are exceptional fields that require extra transformation
+
+    :param data: the input form dictionary
+    :return: only valid data, in a dictionary, transformed when needed
     """
-    # TODO
     data_ready = {}
-    data_ready['HostingType'] = data['HostingType']
-    data_ready['MonthlyPrice'] = get_monthly_price_value(data['MonthlyPrice'])
+    for key, value in data.items():
+        # Only if has no special characters, we include it
+        if value.isalnum():
+            # Additional transformations
+            if key == 'MonthlyPrice':
+                data_ready[key] = get_monthly_price_value(data['MonthlyPrice'])
+            # By default, we just include the item
+            else:
+                data_ready[key] = value
     return data_ready
 
 
@@ -135,22 +142,39 @@ def prepare_query(data):
 
     There's no need to worry about data transformations as were done by 'validate' method
 
+    :param data: dictionary including all fields to filter
     :return: the query ready to be executed
     """
-    sql = """SELECT {} 
+
+    sql = """SELECT {}
         FROM hosting_plan
-        WHERE HostingType = '{}'
-        AND PaymentMonthMin <= {}
+        WHERE HostingType = %s
+        AND PaymentMonthMin <= %s
         ORDER BY PaymentMonthMin ASC
         """.format(
-            ", ".join(DB_ATTRIBUTES),
-            data['HostingType'],
-            data['MonthlyPrice']
+            ", ".join(DB_ATTRIBUTES)
         )
+    args = []
+    args.append(data['HostingType'])
+    args.append(data['MonthlyPrice'])
+
+    #for key, value in data.items():
+        # Integer, less or equal than
+    #        sql = sql + " AND  <= %s"
+    #    if key in ["MonthlyPrice"]:
+    #        args.append(value)
+        # TODO add more conditions
+        # We may want to add conditions like string X = string Y
+
+    # TODO sort by
+    # We are sorting now by price, only, but in the future
+    # will accept sorting by any column, probably
+    # if "MonthlyPrice" in data:
+    #     sql = sql + " SORT BY " 
 
     pprint(sql)
 
-    return sql
+    return sql, args
 
 
 def convert_to_json(item):
@@ -188,18 +212,18 @@ def get_hosting_list(out, data):
     Gets the list of hosting plans.
 
     :param out: the lambda return variable, to be updated accordingly
-    :param data: a dictionary including all data used to filter
+    :param data: a dictionary including all data used to filter, already validated and transformed
     
     :return: The list of hosting plans
     """
 
     envs = get_environment_variables()
     conn = mysql_connect(envs['mysql_host'], envs['mysql_db'], envs['mysql_user'], envs['mysql_pass'])
-    sql = prepare_query(data)
+    sql, args = prepare_query(data)
     try:
         # https://docs.aws.amazon.com/lambda/latest/dg/services-rds-tutorial.html#vpc-rds-deployment-pkg
         with conn.cursor() as cursor:
-            cursor.execute(sql)
+            cursor.execute(sql, args)
             response = []
             for row in cursor:
                 # Lambda response has to be an object compliant with json.dumps
@@ -236,6 +260,9 @@ def handler(event, context):
     if event['body']:
         pprint(event['body'])
         body = json.loads(event['body'])
+        pprint("[DEBUG] -- body here")
+        pprint(body)
+        pprint("[DEBUG] -- end body")
 
     filter_data = validate(body)
 
