@@ -111,7 +111,7 @@ def validate_and_transform(data):
             if key == 'MonthlyPrice':
                 data_ready['PaymentMonthMin'] = get_monthly_price_value(data['MonthlyPrice'])
             # HostingType = all -> means no filter
-            elif key == 'HostingType' and value == 'Todos':
+            elif key in ['HostingType','DomainIncluded'] and value == 'Todos':
                 continue
             # By default, we just include the item
             else:
@@ -151,15 +151,13 @@ def append_query_condition(column):
     :return out: a string to append to the query condition
     """
 
-    # less or equal than
     if column in ["PaymentMonthMin"]:
         out = column + " <= %s"
-    # equal to
-    elif column in ["HostingType"]:
+    elif column in ["HostingType", "DomainIncluded"]:
         out = column + " = %s"
     else:
         # TODO
-        sys.exit("Unexpected error appending conditions")
+        sys.exit("Unexpected error appending condition {}".format(column))
     
     return out
 
