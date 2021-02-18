@@ -21,6 +21,7 @@ DB_ATTRIBUTES = ['Currency',
     'PaymentMonthMin',
     'Provider',
     'SslCertificate',
+    'SupportList',
     'WebNumber'] 
 
 

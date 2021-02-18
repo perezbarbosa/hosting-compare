@@ -84,6 +84,7 @@ def insert_into_database(db, entry):
     partition_key = None
     provider = None
     ssl_certificate = None
+    support_list = []
     web_number = None       # Nullable
 
     if 'Currency' in entry:
@@ -115,8 +116,19 @@ def insert_into_database(db, entry):
         provider = list(entry['Provider'].values())[0]
     if 'Ssl' in entry:
         ssl_certificate = list(entry['Ssl'].values())[0]
+    if 'SupportChat' in entry and list(entry['SupportChat'].values())[0] == "true":
+        support_list.append("Chat")
+    if 'SupportEmail' in entry and list(entry['SupportEmail'].values())[0] == "true":
+        support_list.append("Email")
+    if 'SupportPhone' in entry and list(entry['SupportPhone'].values())[0] == "true":
+        support_list.append("Phone")
+    if 'SupportTicket' in entry and list(entry['SupportTicket'].values())[0] == "true":
+        support_list.append("Ticket")    
     if 'WebNumber' in entry:
         web_number = list(entry['WebNumber'].values())[0]
+
+    support_list = ",".join(support_list)
+    
 
     sql = """INSERT INTO hosting_plan
         (Currency,
@@ -133,8 +145,9 @@ def insert_into_database(db, entry):
         PaymentMonthMin,
         Provider,
         SslCertificate,
+        SupportList,
         WebNumber)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     val = (currency,
         database_number,
         database_size,
@@ -149,6 +162,7 @@ def insert_into_database(db, entry):
         payment_month_min,
         provider,
         ssl_certificate,
+        support_list,
         web_number)
 
     try:
@@ -157,33 +171,8 @@ def insert_into_database(db, entry):
         db.commit()
         print(cursor.rowcount, "record inserted.")
     except:
-        print("Cannot insert into database - hosting table")
+        print("Cannot insert into database")
         print(format(sys.exc_info()))
-    
-    # SUPPORT TABLE
-
-    sql = """SELECT id 
-        FROM {}.hosting_plan
-        WHERE PartitionKey = '{}'""".format(MYSQL_DB, partition_key)
-
-    print(sql)
-
-    try: 
-        cursor.execute(sql)
-        id = cursor.fetchone()[0]
-        print("Got id {} for partition_key {}".format(id, partition_key))
-    except:
-        print("Cannot query the database - hosting table")
-        print(format(sys.exc_info()))
-
-    if 'SupportChat' in entry and list(entry['SupportChat'].values())[0] == "true":
-        insert_into_hosting_support(db, id, 1)
-    if 'SupportEmail' in entry and list(entry['SupportEmail'].values())[0] == "true":
-        insert_into_hosting_support(db, id, 2)
-    if 'SupportPhone' in entry and list(entry['SupportPhone'].values())[0] == "true":
-        insert_into_hosting_support(db, id, 3)
-    if 'SupportTicket' in entry and list(entry['SupportTicket'].values())[0] == "true":
-        insert_into_hosting_support(db, id, 4)
 
 
 current_dir = os.path.abspath(os.getcwd())

@@ -246,20 +246,28 @@ function GetHtmlSSL(ssl) {
 }
 
 /* Source: https://uxwing.com/
+ *
+ * Params:
+ *   support_list: a string which is actually a list of support types
  */
-function GetHtmlForSupport(chat, email, phone, ticket) {
+function GetHtmlForSupport(support_list) {
     var html = "<li style='margin-top: 10px;'>Soporte técnico</li><li>"
-    if (chat) {
-        html = html + "<img src='img/chat.svg' alt='Chat de soporte en línea' style='height: 25px; margin-right: 15px;' />"
-    }
-    if (email) {
-        html = html + "<img src='img/email.svg' alt='Soporte via email' style='height: 25px; margin-right: 15px;' />"
-    }
-    if (phone) {
-        html = html + "<img src='img/phone.svg' alt='Soporte telefónico' style='height: 25px; margin-right: 15px;' />"
-    }
-    if (ticket) {
-        html = html + "<img src='img/ticket.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
+    var support = support_list.split(",")
+    for (i = 0; i < support.length; i++) {
+        switch(support[i]) {
+            case "Chat":
+                html = html + "<img src='img/chat.svg' alt='Chat de soporte en línea' style='height: 25px; margin-right: 15px;' />"
+                break;
+            case "Email":
+                html = html + "<img src='img/email.svg' alt='Soporte via email' style='height: 25px; margin-right: 15px;' />"
+                break;
+            case "Phone":
+                html = html + "<img src='img/phone.svg' alt='Soporte telefónico' style='height: 25px; margin-right: 15px;' />"
+                break;
+            case "Ticket":
+            default:
+                html = html + "<img src='img/ticket.svg' alt='Soporte mediante sistema de tickets' style='height: 25px; margin-right: 15px;' />"
+        }
     }
     return html + "</li>"
 }
@@ -299,7 +307,7 @@ function SetHtmlForAnItem(item) {
     html = html 
             + GetHtmlDomains(item['DomainIncluded'], item['DomainsParked'], item['DomainSubdomain'])
             + GetHtmlSSL(item['SslCertificate'])
-            + GetHtmlForSupport(item['SupportChat'], item['SupportEmail'], item['SupportPhone'], item['SupportTicket'])
+            + GetHtmlForSupport(item['SupportList'])
     html = html + GetHtmlEndForAColumn()
 
     // COLUMN 3 - PRICE
