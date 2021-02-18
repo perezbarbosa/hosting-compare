@@ -1,0 +1,8 @@
+# quehosting.es/robots.txt
+# Tell Google to not to crawl internal searches, nor error pages
+# We have to allow Googlebot to see the web as a user, so including css, images and javascript
+# https://developers.google.com/search/docs/beginner/seo-starter-guide?hl=en%2F&visit_id=637492835352180175-116722943&rd=1#help-google-find-your-content
+User-agent: googlebot
+Disallow: /search
+Disallow: /save
+Disallow: /404.html
