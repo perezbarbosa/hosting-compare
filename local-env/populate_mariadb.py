@@ -10,6 +10,28 @@ MYSQL_PASS="quehosting.es"
 MYSQL_DB="quehosting"
 
 
+def insert_into_hosting_support(db, id, support):
+    """
+    Inserts into hosting_support table
+
+    :param db: mysql db cursor object
+    :param id: the hosting_id
+    :param support: the support_id
+    """
+    sql = """INSERT INTO hosting_support
+            (HostingPlanId, SupportId)
+            VALUES (%s, %s)"""
+    val = (id, support)
+    try:
+        cursor = db.cursor() 
+        cursor.execute(sql, val)
+        db.commit()
+        print(cursor.rowcount, "record inserted.")
+    except:
+        print("Cannot insert into database - support table")
+        print(format(sys.exc_info()))
+
+
 def get_hosting_data_files(dir):
     """
     Returns the list of json files from the sample-data directory
@@ -46,6 +68,8 @@ def insert_into_database(db, entry):
     :params entry: json object containing all data to be inserted
     """
 
+    # HOSTING TABLE
+
     currency = None
     database_number = None  # Nullable
     database_size = None    # Nullable
@@ -60,6 +84,7 @@ def insert_into_database(db, entry):
     partition_key = None
     provider = None
     ssl_certificate = None
+    support_list = []
     web_number = None       # Nullable
 
     if 'Currency' in entry:
@@ -91,8 +116,19 @@ def insert_into_database(db, entry):
         provider = list(entry['Provider'].values())[0]
     if 'Ssl' in entry:
         ssl_certificate = list(entry['Ssl'].values())[0]
+    if 'SupportChat' in entry and list(entry['SupportChat'].values())[0] == "true":
+        support_list.append("Chat")
+    if 'SupportEmail' in entry and list(entry['SupportEmail'].values())[0] == "true":
+        support_list.append("Email")
+    if 'SupportPhone' in entry and list(entry['SupportPhone'].values())[0] == "true":
+        support_list.append("Phone")
+    if 'SupportTicket' in entry and list(entry['SupportTicket'].values())[0] == "true":
+        support_list.append("Ticket")    
     if 'WebNumber' in entry:
         web_number = list(entry['WebNumber'].values())[0]
+
+    support_list = ",".join(support_list)
+    
 
     sql = """INSERT INTO hosting_plan
         (Currency,
@@ -109,8 +145,9 @@ def insert_into_database(db, entry):
         PaymentMonthMin,
         Provider,
         SslCertificate,
+        SupportList,
         WebNumber)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     val = (currency,
         database_number,
         database_size,
@@ -125,6 +162,7 @@ def insert_into_database(db, entry):
         payment_month_min,
         provider,
         ssl_certificate,
+        support_list,
         web_number)
 
     try:
