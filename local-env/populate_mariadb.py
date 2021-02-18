@@ -10,6 +10,28 @@ MYSQL_PASS="quehosting.es"
 MYSQL_DB="quehosting"
 
 
+def insert_into_hosting_support(db, id, support):
+    """
+    Inserts into hosting_support table
+
+    :param db: mysql db cursor object
+    :param id: the hosting_id
+    :param support: the support_id
+    """
+    sql = """INSERT INTO hosting_support
+            (HostingPlanId, SupportId)
+            VALUES (%s, %s)"""
+    val = (id, support)
+    try:
+        cursor = db.cursor() 
+        cursor.execute(sql, val)
+        db.commit()
+        print(cursor.rowcount, "record inserted.")
+    except:
+        print("Cannot insert into database - support table")
+        print(format(sys.exc_info()))
+
+
 def get_hosting_data_files(dir):
     """
     Returns the list of json files from the sample-data directory
@@ -45,6 +67,8 @@ def insert_into_database(db, entry):
     :params db: database connection object
     :params entry: json object containing all data to be inserted
     """
+
+    # HOSTING TABLE
 
     currency = None
     database_number = None  # Nullable
@@ -133,8 +157,33 @@ def insert_into_database(db, entry):
         db.commit()
         print(cursor.rowcount, "record inserted.")
     except:
-        print("Cannot insert into database")
+        print("Cannot insert into database - hosting table")
         print(format(sys.exc_info()))
+    
+    # SUPPORT TABLE
+
+    sql = """SELECT id 
+        FROM {}.hosting_plan
+        WHERE PartitionKey = '{}'""".format(MYSQL_DB, partition_key)
+
+    print(sql)
+
+    try: 
+        cursor.execute(sql)
+        id = cursor.fetchone()[0]
+        print("Got id {} for partition_key {}".format(id, partition_key))
+    except:
+        print("Cannot query the database - hosting table")
+        print(format(sys.exc_info()))
+
+    if 'SupportChat' in entry and list(entry['SupportChat'].values())[0] == "true":
+        insert_into_hosting_support(db, id, 1)
+    if 'SupportEmail' in entry and list(entry['SupportEmail'].values())[0] == "true":
+        insert_into_hosting_support(db, id, 2)
+    if 'SupportPhone' in entry and list(entry['SupportPhone'].values())[0] == "true":
+        insert_into_hosting_support(db, id, 3)
+    if 'SupportTicket' in entry and list(entry['SupportTicket'].values())[0] == "true":
+        insert_into_hosting_support(db, id, 4)
 
 
 current_dir = os.path.abspath(os.getcwd())

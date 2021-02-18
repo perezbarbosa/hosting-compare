@@ -16,7 +16,7 @@ DomainSubdomain INT,
 DomainsParked INT,
 HostingPlan VARCHAR(255) NOT NULL,
 HostingType VARCHAR(255) NOT NULL,
-PartitionKey VARCHAR(255) NOT NULL,
+PartitionKey VARCHAR(255) NOT NULL UNIQUE,
 PaymentMonthMin DECIMAL(6,2) NOT NULL,
 Provider VARCHAR(255) NOT NULL,
 SslCertificate VARCHAR(255),
@@ -46,3 +46,9 @@ FOREIGN KEY (SupportId)
 docker exec mariadb mysql -u root -p$MYSQL_ROOT_PASSWORD -e "$create_hosting_table" $MYSQL_DATABASE
 docker exec mariadb mysql -u root -p$MYSQL_ROOT_PASSWORD -e "$create_support_table" $MYSQL_DATABASE
 docker exec mariadb mysql -u root -p$MYSQL_ROOT_PASSWORD -e "$create_hosting_support_table" $MYSQL_DATABASE
+
+# Insert Support table
+for support in chat email phone ticket
+do
+    docker exec mariadb mysql -u root -p$MYSQL_ROOT_PASSWORD -e "INSERT INTO support (Name) VALUES ('$support')" $MYSQL_DATABASE
+done
