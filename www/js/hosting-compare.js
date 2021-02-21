@@ -62,9 +62,13 @@ function SearchByHostingType(data) {
             } else {
                 var items = data['message']
                 var html = ""
-                for (var k in items) {
-                    // https://www.w3schools.com/jquery/jquery_dom_add.asp
-                    var html = html  + SetHtmlForAnItem(items[k])
+                if ( items.length == 0 ) {
+                    html = "No se han encontrado resultados"
+                } else {
+                    for (var k in items) {
+                        // https://www.w3schools.com/jquery/jquery_dom_add.asp
+                        var html = html  + SetHtmlForAnItem(items[k])
+                    }
                 }
                 div_result.innerHTML=html
             }
