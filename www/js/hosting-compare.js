@@ -165,9 +165,9 @@ function GetHtmlDetailedPrice(currency, min_price, all_prices) {
     return html
 }
 
-function GetHtmlSimplePrice(currency, min_price) {
+function GetHtmlSimplePrice(currency, min_price, url) {
     var html = "<div class='card-title pricing-card-title text-right'>desde <span style='font-size: x-large; font-weight: bolder;'>" + min_price + currency + "</span>/ mes</div>"
-    html = html + "<button type='button' class='btn btn-lg btn-block btn-primary'>Contratar</button>"
+    html = html + "<a href='" + url + "' type='button' class='btn btn-lg btn-block btn-primary' target='_blank'>Contratar</a>"
     return html
 }
 
@@ -317,7 +317,7 @@ function SetHtmlForAnItem(item) {
     // COLUMN 3 - PRICE
     html = html + GetHtmlStartForAColumn()
     html = html 
-            + GetHtmlSimplePrice(item['Currency'], item['PaymentMonthMin'])
+            + GetHtmlSimplePrice(item['Currency'], item['PaymentMonthMin'], item['Url'])
     html = html + GetHtmlEndForAColumn()
 
     // END
