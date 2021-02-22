@@ -87,6 +87,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-wordpress%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}&file_id=1402"
+        },
         "WebNumber": {
             "N": "100"
         }
@@ -179,6 +182,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-wordpress%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}&file_id=1402"
+        },
         "WebNumber": {
             "N": "300"
         }
@@ -270,6 +276,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-wordpress%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}&file_id=1402"
         },
         "WebNumber": {
             "N": "300"

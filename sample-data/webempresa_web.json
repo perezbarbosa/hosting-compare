@@ -60,6 +60,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.webempresa.com/europa/gestion/aff.php?aff=7095"
+        },
         "WebNumber": {
             "N": "2"
         }
@@ -125,6 +128,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.webempresa.com/europa/gestion/aff.php?aff=7095"
+        },
         "WebNumber": {
             "N": "99999"
         }
@@ -189,6 +195,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://clientes.webempresa.com/europa/gestion/aff.php?aff=7095"
         },
         "WebNumber": {
             "N": "99999"

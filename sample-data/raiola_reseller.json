@@ -69,6 +69,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://gestiondecuenta.eu/aff.php?aff=4281"
+        },
         "Users": {
             "N": "30"
         },
@@ -145,6 +148,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://gestiondecuenta.eu/aff.php?aff=4281"
         },
         "Users": {
             "N": "50"
@@ -223,6 +229,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://gestiondecuenta.eu/aff.php?aff=4281"
+        },
         "Users": {
             "N": "70"
         },
@@ -299,6 +308,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://gestiondecuenta.eu/aff.php?aff=4281"
         },
         "Users": {
             "N": "90"
