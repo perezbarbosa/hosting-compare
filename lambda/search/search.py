@@ -22,6 +22,7 @@ DB_ATTRIBUTES = ['Currency',
     'Provider',
     'SslCertificate',
     'SupportList',
+    'Url',
     'WebNumber'] 
 
 

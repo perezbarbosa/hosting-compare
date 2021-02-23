@@ -75,6 +75,9 @@
         "WebNumber": {
             "N": "10"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148"
+        },
         "Users": {
             "N": "10"
         }
@@ -154,6 +157,9 @@
         },
         "WebNumber": {
             "N": "25"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148"
         },
         "Users": {
             "N": "25"
@@ -235,6 +241,9 @@
         "WebNumber": {
             "N": "50"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148"
+        },
         "Users": {
             "N": "50"
         }
@@ -314,6 +323,9 @@
         },
         "WebNumber": {
             "N": "100"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148"
         },
         "Users": {
             "N": "100"

@@ -5,3 +5,26 @@ nav .navbar-nav li a{
 nav .navbar-nav li a:hover{
     color: #fefefe;
     }
+
+#first-row {
+    margin-top: 50px;
+}
+
+#first-row h1 {
+    color: #614a8f;
+    font-size: x-large;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* FAQS */
+
+h2 {
+    margin-top: 20px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#faq div.collapse {
+    margin-bottom: 20px;
+}

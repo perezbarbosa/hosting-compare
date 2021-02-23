@@ -54,6 +54,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-wordpress"
+        },
         "WebNumber": {
             "N": "1"
         }
@@ -112,6 +115,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-wordpress"
         },
         "WebNumber": {
             "N": "2"
@@ -172,6 +178,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-wordpress"
+        },
         "WebNumber": {
             "N": "5"
         }
@@ -230,6 +239,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-wordpress"
         },
         "WebNumber": {
             "N": "10"

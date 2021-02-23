@@ -57,6 +57,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-prestashop"
+        },
         "WebNumber": {
             "N": "1"
         }
@@ -118,6 +121,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-prestashop"
         },
         "WebNumber": {
             "N": "2"
@@ -181,6 +187,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-prestashop"
+        },
         "WebNumber": {
             "N": "5"
         }
@@ -243,6 +252,9 @@
         "Ssl": {
             "S": "true"
         },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-prestashop"
+        },
         "WebNumber": {
             "N": "10"
         }
@@ -304,6 +316,9 @@
         },
         "Ssl": {
             "S": "true"
+        },
+        "Url": {
+            "S": "https://clientes.tropicalserver.com/aff.php?aff=148&page=hosting-prestashop"
         },
         "WebNumber": {
             "N": "10"

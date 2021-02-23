@@ -85,6 +85,7 @@ def insert_into_database(db, entry):
     provider = None
     ssl_certificate = None
     support_list = []
+    url = None
     web_number = None       # Nullable
 
     if 'Currency' in entry:
@@ -124,6 +125,8 @@ def insert_into_database(db, entry):
         support_list.append("Phone")
     if 'SupportTicket' in entry and list(entry['SupportTicket'].values())[0] == "true":
         support_list.append("Ticket")    
+    if 'Url' in entry:
+        url = list(entry['Url'].values())[0]
     if 'WebNumber' in entry:
         web_number = list(entry['WebNumber'].values())[0]
 
@@ -146,8 +149,9 @@ def insert_into_database(db, entry):
         Provider,
         SslCertificate,
         SupportList,
+        Url,
         WebNumber)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     val = (currency,
         database_number,
         database_size,
@@ -163,6 +167,7 @@ def insert_into_database(db, entry):
         provider,
         ssl_certificate,
         support_list,
+        url,
         web_number)
 
     try:
