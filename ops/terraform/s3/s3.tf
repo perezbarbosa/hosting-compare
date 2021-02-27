@@ -25,16 +25,16 @@ resource "aws_s3_bucket_policy" "quehosting_public_bucket_policy" {
   # Terraform's "jsonencode" function converts a
   # Terraform expression's result to valid JSON syntax.
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Sid": "PublicReadGetObject",
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": [
+        "Sid" : "PublicReadGetObject",
+        "Effect" : "Allow",
+        "Principal" : "*",
+        "Action" : [
           "s3:GetObject"
         ],
-        "Resource": [
+        "Resource" : [
           "arn:aws:s3:::quehosting.es/*"
         ]
       }

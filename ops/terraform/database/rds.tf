@@ -3,8 +3,8 @@ resource "aws_db_instance" "quehosting_db" {
   engine                  = "mariadb"
   engine_version          = "10.5.8"
   instance_class          = "db.t2.micro"
-  id                      = "quehosting-dev"  # RDS id
-  name                    = "quehostingdev"   # Defaul database name
+  id                      = "quehosting-dev" # RDS id
+  name                    = "quehostingdev"  # Defaul database name
   username                = "queadmin"
   password                = "fakepassword"
   parameter_group_name    = "default.mariadb10.5"

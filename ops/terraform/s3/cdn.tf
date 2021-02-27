@@ -2,23 +2,24 @@ resource "aws_cloudfront_distribution" "quehosting_cdn" {
   enabled = true
 
   origin {
-    domain_name = "quehosting.es.s3-website-${module.vars.region}.amazonaws.com"
+    domain_name = aws_s3_bucket.quehosting_public_bucket.bucket_regional_domain_name
     origin_id   = "quehosting.es"
   }
 
   default_cache_behavior {
-    allowed_methods = [ "GET", "HEAD" ]
-    cached_methods   = ["GET", "HEAD"]
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
     viewer_protocol_policy = "redirect-to-https"
-    target_origin_id = "quehosting.es"
+    target_origin_id       = "quehosting.es"
   }
 
   price_class = "PriceClass_100"
-  aliases = [ "quehosting.es" ]
+  aliases     = ["quehosting.es"]
 
   viewer_certificate {
-    acm_certificate_arn = module.vars.domain_ssl_arn
+    acm_certificate_arn      = module.vars.domain_ssl_arn
     minimum_protocol_version = "TLSv1.2_2019"
+    ssl_support_method       = "sni-only"
   }
 
   restrictions {
@@ -33,22 +34,22 @@ resource "aws_cloudfront_distribution" "www_quehosting_cdn" {
   enabled = true
 
   origin {
-    domain_name = "www.quehosting.es.s3-website-${module.vars.region}.amazonaws.com"
+    domain_name = aws_s3_bucket.www_quehosting_public_bucket.bucket_regional_domain_name
     origin_id   = "www.quehosting.es"
   }
 
   default_cache_behavior {
-    allowed_methods = [ "GET", "HEAD" ]
-    cached_methods   = ["GET", "HEAD"]
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
     viewer_protocol_policy = "redirect-to-https"
-    target_origin_id = "www.quehosting.es"
+    target_origin_id       = "www.quehosting.es"
   }
 
   price_class = "PriceClass_100"
-  aliases = [ "www.quehosting.es" ]
+  aliases     = ["www.quehosting.es"]
 
   viewer_certificate {
-    acm_certificate_arn = module.vars.domain_ssl_arn
+    acm_certificate_arn      = module.vars.domain_ssl_arn
     minimum_protocol_version = "TLSv1.2_2019"
   }
 
