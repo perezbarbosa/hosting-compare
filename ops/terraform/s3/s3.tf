@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "www_quehosting_public_bucket" {
   acl    = "public-read"
 
   website {
-    redirect_all_requests_to = "quehosting.es"
+    redirect_all_requests_to = "https://quehosting.es"
   }
 }
 
