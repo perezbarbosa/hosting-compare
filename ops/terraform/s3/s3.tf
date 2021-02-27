@@ -10,6 +10,7 @@ resource "aws_s3_bucket" "quehosting_public_bucket" {
 
 # https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html#redirect-endpoint-host
 # https://simpleit.rocks/web/hostings/redirect-http-to-https-and-www-to-non-www-with-aws-s3-bucket-cloudfront-route-53-and-a-custom-domain/
+# https://medium.com/faun/how-to-host-your-static-website-with-s3-cloudfront-and-set-up-an-ssl-certificate-9ee48cd701f9
 resource "aws_s3_bucket" "www_quehosting_public_bucket" {
   bucket = "www.quehosting.es"
   acl    = "public-read"
