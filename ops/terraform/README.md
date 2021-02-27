@@ -20,8 +20,8 @@ $ cd www
 www$ aws s3 cp . s3://quehosting.es/ --recursive
 ```
 
-We can also use aws-cli to update files
+We can also use aws-cli to update files (including deleted ones in origin)
 ```
 $ cd www
-www$ aws s3 sync . s3://quehosting.es/
+www$ aws s3 sync . s3://quehosting.es/ --delete
 ```
