@@ -13,8 +13,10 @@ resource "aws_cloudfront_distribution" "quehosting_cdn" {
     target_origin_id       = "quehosting.es"
   }
 
-  price_class = "PriceClass_100"
-  aliases     = ["quehosting.es"]
+  price_class         = "PriceClass_100"
+  aliases             = ["quehosting.es"]
+  default_root_object = "index.html"
+
 
   viewer_certificate {
     acm_certificate_arn      = module.vars.domain_ssl_arn
