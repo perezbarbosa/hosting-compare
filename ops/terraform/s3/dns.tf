@@ -4,8 +4,8 @@ resource "aws_route53_record" "quehosting_es" {
     type    = "A"
 
     alias {
-        name                    = aws_s3_bucket.quehosting_public_bucket.website_domain
-        zone_id                 = aws_s3_bucket.quehosting_public_bucket.hosted_zone_id
+        name                    = aws_cloudfront_distribution.quehosting_cdn.domain_name
+        zone_id                 = aws_cloudfront_distribution.quehosting_cdn.hosted_zone_id
         evaluate_target_health  = false
     }
 }
@@ -16,8 +16,8 @@ resource "aws_route53_record" "www_quehosting_es" {
     type    = "A"
 
     alias {
-        name                    = aws_s3_bucket.www_quehosting_public_bucket.website_domain
-        zone_id                 = aws_s3_bucket.www_quehosting_public_bucket.hosted_zone_id
+        name                    = aws_cloudfront_distribution.www_quehosting_cdn.domain_name
+        zone_id                 = aws_cloudfront_distribution.www_quehosting_cdn.hosted_zone_id
         evaluate_target_health  = false
     }
 }

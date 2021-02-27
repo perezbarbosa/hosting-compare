@@ -10,6 +10,7 @@ This terraform folder contains most of the necessary resources to host the proje
 2- Route53 Hosted Zone: it has been automatically generated when purchasing the domain with AWS, so this was not managed by terraform.
 3- S3: the public bucket to host the static code. This includes the DNS records pointing to the bucket's website endpoint, the secondary bucket for www redirect, as well as cloudfront distributions to use HTTPS.
 NOTE: At this point, we may need to fix the DNS record Alias as it may be wrongly linked
+NOTE: Also an SSL Certificate for both domains should be manually created via ACM
 
 ## Static website operations
 
