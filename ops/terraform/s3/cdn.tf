@@ -2,7 +2,7 @@ resource "aws_cloudfront_distribution" "quehosting_cdn" {
   enabled = true
 
   origin {
-    domain_name = aws_s3_bucket.quehosting_public_bucket.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.quehosting_public_bucket.website_endpoint
     origin_id   = "quehosting.es"
   }
 
@@ -36,7 +36,7 @@ resource "aws_cloudfront_distribution" "www_quehosting_cdn" {
   enabled = true
 
   origin {
-    domain_name = aws_s3_bucket.www_quehosting_public_bucket.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.www_quehosting_public_bucket.website_endpoint
     origin_id   = "www.quehosting.es"
   }
 
@@ -49,6 +49,7 @@ resource "aws_cloudfront_distribution" "www_quehosting_cdn" {
 
   price_class = "PriceClass_100"
   aliases     = ["www.quehosting.es"]
+  default_root_object = "index.html"
 
   viewer_certificate {
     acm_certificate_arn      = module.vars.domain_ssl_arn
