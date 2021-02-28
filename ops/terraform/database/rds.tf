@@ -3,20 +3,29 @@ resource "aws_db_instance" "quehosting_db" {
   engine                  = "mariadb"
   engine_version          = "10.5.8"
   instance_class          = "db.t2.micro"
-  id                      = "quehosting-dev" # RDS id
+  identifier              = "quehosting-dev" # RDS id
   name                    = "quehostingdev"  # Defaul database name
-  username                = "queadmin"
-  password                = "fakepassword"
+  username                = "changeme"
+  password                = "changeme"
   parameter_group_name    = "default.mariadb10.5"
   skip_final_snapshot     = true
   backup_retention_period = 0
   maintenance_window      = "Mon:04:00-Mon:04:30"
+  db_subnet_group_name    = aws_db_subnet_group.default_vpc_private.name
   vpc_security_group_ids  = [aws_security_group.quehosting_db_sg.id]
+  copy_tags_to_snapshot   = true
+
+  lifecycle {
+    ignore_changes = [
+      username,
+      password
+    ]
+  }
 }
 
-resource "aws_db_subnet_group" "default_vpc_01a101f1d11874973" {
-  name       = "default-vpc-01a101f1d11874973"
-  subnet_ids = data.aws_subnet_ids.example.ids
+resource "aws_db_subnet_group" "default_vpc_private" {
+  name       = "default-vpc-private"
+  subnet_ids = data.aws_subnet_ids.private_subnets.ids
 }
 
 resource "aws_security_group" "quehosting_db_sg" {

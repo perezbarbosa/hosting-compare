@@ -7,7 +7,7 @@ output "region" {
 }
 
 variable "vpc_id" {
-  default = "vpc-01a101f1d11874973"
+  default = "vpc-2260454a"
 }
 
 output "vpc_id" {
@@ -15,7 +15,7 @@ output "vpc_id" {
 }
 
 variable "vpc_cidr" {
-  default = "10.0.0.0/16"
+  default = "172.31.0.0/16"
 }
 
 output "vpc_cidr" {
