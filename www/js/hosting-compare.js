@@ -55,7 +55,7 @@ function SearchByHostingType(data) {
         crossDomain: true,
         success:function(data) {
             //alert(JSON.stringify(data, null, 2));
-            var div_result=document.getElementById("test-result");
+            var div_result=document.getElementById("search-result");
             if (data.length == 0) {
                 // NO results
                 div_result.innerHTML="No se han encontrado resultados"
@@ -75,7 +75,7 @@ function SearchByHostingType(data) {
         },
         error:function (xhr, ajaxOptions, thrownError){
             alert(xhr);
-            var div_result=document.getElementById("test-result");
+            var div_result=document.getElementById("search-result");
             if(xhr.status==404) {
                 div_result.innerHTML = 'Item not found'
             }
