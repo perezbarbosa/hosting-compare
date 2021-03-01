@@ -39,6 +39,7 @@ resource "aws_security_group" "quehosting_db_sg" {
     to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = [module.vars.vpc_cidr]
+    security_groups = [data.aws_security_group.search_lambda_sg.id]
   }
 
   egress {

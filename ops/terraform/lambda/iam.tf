@@ -21,7 +21,7 @@ EOF
 # Manage Network Interfaces to connect to the VPC
 # https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html#vpc-permissions
 resource "aws_iam_role_policy_attachment" "name" {
-  role       = aws_iam_role.lambda_exec_iam
+  role       = aws_iam_role.lambda_exec_iam.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
-  
+
 }

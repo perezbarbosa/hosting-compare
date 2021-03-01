@@ -34,17 +34,17 @@ def get_environment_variables():
     """
     envs = {}
     try:
-        #envs['mysql_host'] = os.environ['MYSQL_HOST']
-        #envs['mysql_db'] = os.environ['MYSQL_DB']
-        #envs['mysql_user'] = os.environ['MYSQL_USER']
-        #envs['mysql_pass'] = os.environ['MYSQL_PASS']
-        envs['mysql_host'] = "mariadb"
-        envs['mysql_db'] = "quehosting" 
-        envs['mysql_user'] = "root"
-        envs['mysql_pass'] = "quehosting.es" 
+        envs['mysql_host'] = os.environ['MYSQL_HOST']
+        envs['mysql_db'] = os.environ['MYSQL_DB']
+        envs['mysql_user'] = os.environ['MYSQL_USER']
+        envs['mysql_pass'] = os.environ['MYSQL_PASS']
+        #envs['mysql_host'] = "mariadb"
+        #envs['mysql_db'] = "quehosting" 
+        #envs['mysql_user'] = "root"
+        #envs['mysql_pass'] = "quehosting.es" 
     except:
         print("ERROR: Unexpected error: Could not get environment")
-        pprint(sys.exc_info())
+        #pprint(sys.exc_info())
         sys.exit()
 
     return envs
@@ -138,7 +138,7 @@ def mysql_connect(host, db, user, password):
     except pymysql.MySQLError as e:
         print("ERROR: Unexpected error: Could not connect to the database LALALALA")
         print(host, user, password, db)
-        pprint(sys.exc_info())
+        #pprint(sys.exc_info())
         sys.exit()
     return conn
 
@@ -194,8 +194,8 @@ def prepare_query(data):
   
     sql = sql + " ORDER BY " + sort + " ASC"
 
-    pprint(sql)
-    pprint(args)
+    #pprint(sql)
+    #pprint(args)
 
     return sql, args
 
@@ -259,11 +259,11 @@ def get_hosting_list(out, data):
 
         out['statusCode'] = '200'
 
-        pprint("HEADERS")
-        pprint(out['headers'])
+        #pprint("HEADERS")
+        #pprint(out['headers'])
     except:
         print("Unexpected error")
-        pprint(sys.exc_info())
+        #pprint(sys.exc_info())
         out['statusCode'] = 500
         out['body'] = {
             'message': 'Cannot query the database',
@@ -281,16 +281,16 @@ def handler(event, context):
 
     ## Get data from json 
     if event['body']:
-        pprint(event['body'])
+        #pprint(event['body'])
         body = json.loads(event['body'])
-        pprint("[DEBUG] -- body here")
-        pprint(body)
-        pprint("[DEBUG] -- end body")
+        #pprint("[DEBUG] -- body here")
+        #pprint(body)
+        #pprint("[DEBUG] -- end body")
 
     filter_data = validate_and_transform(body)
 
     out, response = get_hosting_list(out, filter_data) 
 
-    pprint(out)
+    #pprint(out)
 
     return out
