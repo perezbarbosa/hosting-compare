@@ -20,11 +20,11 @@ NOTE: default VPC's public subnets have been manually tagged as "Tier":"Public" 
 NOTE: At this point, we may need to fix the DNS record Alias as it may be wrongly linked to the CloudFront distributions
 NOTE: Also an SSL Certificate for both domains should be manually created via ACM before creating the CloudFront distributions
 
-4- **Lambda functions**: the lambda folder includes the [VPC lambda function](https://aws.amazon.com/blogs/aws/new-access-resources-in-a-vpc-from-your-lambda-functions/), meaning the lambda (placed in public subnets) will have its own security group, which will be used by the RDS to restrict access only to that function. Moreover, the API Gateway is created at this point, exposing the lambda function to the world.
+4- **Lambda**: the lambda folder includes the [VPC lambda function](https://aws.amazon.com/blogs/aws/new-access-resources-in-a-vpc-from-your-lambda-functions/), meaning the lambda (placed in public subnets) will have its own security group, which will be used by the RDS to restrict access only to that function. Moreover, the API Gateway is created at this point, exposing the lambda function to the world.
 
 5- **RDS**: the relational database, hosted in the default VPC's private subnets.
 
-6- **Management EC2 instance**: this is not strictily necessary, as it is not part of the final solution, but it becames pretty handy to have an instance we can use to connect to our database to perform admin operations like:
+6- **EC2**: this is not strictily necessary, as it is not part of the final solution, but it becames pretty handy to have an EC2 instance we can use to connect to our database to perform admin operations like:
 
 ```
 # Dump local development database to use the management EC2 instance to populate RDS
