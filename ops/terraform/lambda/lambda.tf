@@ -3,6 +3,7 @@ resource "aws_lambda_function" "search_lambda_function" {
   function_name = "search"
   role          = aws_iam_role.lambda_exec_iam.arn
   handler       = "search.handler"
+  timeout       = 10
 
   source_code_hash = filebase64sha256("~/search.zip")
 
@@ -27,4 +28,11 @@ resource "aws_security_group" "search_lambda_sg" {
   name        = "search-lambda-sg"
   description = "Search lambda function sg with no rules. Just used by RDS to allow its access."
   vpc_id      = module.vars.vpc_id
+
+  egress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [module.vars.vpc_cidr]
+  }
 }

@@ -25,7 +25,6 @@ DB_ATTRIBUTES = ['Currency',
     'Url',
     'WebNumber'] 
 
-
 def get_environment_variables():
     """
     Gets the environment variables
@@ -38,13 +37,8 @@ def get_environment_variables():
         envs['mysql_db'] = os.environ['MYSQL_DB']
         envs['mysql_user'] = os.environ['MYSQL_USER']
         envs['mysql_pass'] = os.environ['MYSQL_PASS']
-        #envs['mysql_host'] = "mariadb"
-        #envs['mysql_db'] = "quehosting" 
-        #envs['mysql_user'] = "root"
-        #envs['mysql_pass'] = "quehosting.es" 
     except:
         print("ERROR: Unexpected error: Could not get environment")
-        #pprint(sys.exc_info())
         sys.exit()
 
     return envs
@@ -133,12 +127,11 @@ def mysql_connect(host, db, user, password):
             host=host,
             user=user,
             password=password,
-            database=db
+            database=db,
+            connect_timeout=5
         )
     except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to the database LALALALA")
-        print(host, user, password, db)
-        #pprint(sys.exc_info())
+        print("ERROR: Unexpected error: Could not connect to the database ", e)
         sys.exit()
     return conn
 
@@ -194,9 +187,6 @@ def prepare_query(data):
   
     sql = sql + " ORDER BY " + sort + " ASC"
 
-    #pprint(sql)
-    #pprint(args)
-
     return sql, args
 
 
@@ -240,12 +230,10 @@ def get_hosting_list(out, data):
     :return: The list of hosting plans
     """
 
-    envs = get_environment_variables()
-    conn = mysql_connect(envs['mysql_host'], envs['mysql_db'], envs['mysql_user'], envs['mysql_pass'])
     sql, args = prepare_query(data)
     try:
         # https://docs.aws.amazon.com/lambda/latest/dg/services-rds-tutorial.html#vpc-rds-deployment-pkg
-        with conn.cursor() as cursor:
+        with DB_CONN.cursor() as cursor:
             cursor.execute(sql, args)
             response = []
             for row in cursor:
@@ -279,18 +267,26 @@ def handler(event, context):
 
     out = init_return_variable()
 
-    ## Get data from json 
-    if event['body']:
-        #pprint(event['body'])
-        body = json.loads(event['body'])
-        #pprint("[DEBUG] -- body here")
-        #pprint(body)
-        #pprint("[DEBUG] -- end body")
+    ## Get data from json - local env
+    #if event['body']:
+    #    pprint(event['body'])
+    #    body = json.loads(event['body'])
+    #    pprint("[DEBUG] -- body here")
+    #    pprint(body)
+    #    pprint("[DEBUG] -- end body")
+    #filter_data = validate_and_transform(body)
 
-    filter_data = validate_and_transform(body)
+    ## Get data from json - prod
+    filter_data = validate_and_transform(event)
 
     out, response = get_hosting_list(out, filter_data) 
 
     #pprint(out)
 
     return out
+
+
+# Connection outside the handler as per AWS suggestion here
+# https://aws.amazon.com/premiumsupport/knowledge-center/lambda-rds-connection-timeouts/
+envs = get_environment_variables()
+DB_CONN = mysql_connect(envs['mysql_host'], envs['mysql_db'], envs['mysql_user'], envs['mysql_pass'])
