@@ -20,7 +20,9 @@ NOTE: default VPC's public subnets have been manually tagged as "Tier":"Public" 
 NOTE: At this point, we may need to fix the DNS record Alias as it may be wrongly linked to the CloudFront distributions
 NOTE: Also an SSL Certificate for both domains should be manually created via ACM before creating the CloudFront distributions
 
-4- **Lambda**: the lambda folder includes the [VPC lambda function](https://aws.amazon.com/blogs/aws/new-access-resources-in-a-vpc-from-your-lambda-functions/), meaning the lambda (placed in public subnets) will have its own security group, which will be used by the RDS to restrict access only to that function. Moreover, the API Gateway is created at this point, exposing the lambda function to the world.
+4- **Lambda**: the lambda folder includes the [VPC lambda function](https://aws.amazon.com/blogs/aws/new-access-resources-in-a-vpc-from-your-lambda-functions/), meaning the lambda (placed in public subnets) will have its own security group, which will be used by the RDS to restrict access only to that function. 
+
+5. **API Gateway**: the API Gateway is created at this point, exposing the lambda function to the world. It also grants permissions to the lambda to be invoked by the API Gateway and finally returns a terraform output to facilitate to get the API Gateway invokation endpoint. 
 
 5- **RDS**: the relational database, hosted in the default VPC's private subnets.
 
@@ -31,8 +33,27 @@ NOTE: Also an SSL Certificate for both domains should be manually created via AC
 ❯ docker exec mariadb sh -c 'mysqldump --databases DATABASE -u USER -pPASSWORD' > DATABASE.dump
 ```
 
+### Testing the API Gateway
+
+Once created, we can create a test payload like this:
+
+```
+❯ cat /tmp/payload
+{
+  "HostingType": "Wordpress",
+  "MonthlyPrice": "Price99",
+  "DomainIncluded": "Todos"
+}
+```
+
+Then run a curl call against the API Gateway invokation endpoint
+
+```
+❯ curl -vX POST https://yg7cplba88.execute-api.eu-west-2.amazonaws.com/dev/search -d @/tmp/payload --header "Content-Type: application/json"
+```
 
 ### How to generate the lambda zip package
+
 Docu: https://docs.aws.amazon.com/lambda/latest/dg/python-package.html
 
 ```

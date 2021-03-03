@@ -102,6 +102,8 @@ def validate_and_transform(data):
     data_ready = {}
     for key, value in data.items():
         # Only if has no special characters, we include it
+        print(format(value))
+        print(format(key))
         if value.isalnum():
             # MonthlyPrice is actually checking the PaymentMonthMin table attribute
             if key == 'MonthlyPrice':
@@ -265,19 +267,18 @@ def handler(event, context):
     Queries the database to get the list of hosting plans based on the filter included in the body         
     """
 
+    print(format(event))
+
     out = init_return_variable()
 
     ## Get data from json - local env
-    #if event['body']:
+    if event['body']:
     #    pprint(event['body'])
-    #    body = json.loads(event['body'])
+        body = json.loads(event['body'])
     #    pprint("[DEBUG] -- body here")
     #    pprint(body)
     #    pprint("[DEBUG] -- end body")
-    #filter_data = validate_and_transform(body)
-
-    ## Get data from json - prod
-    filter_data = validate_and_transform(event)
+    filter_data = validate_and_transform(body)
 
     out, response = get_hosting_list(out, filter_data) 
 

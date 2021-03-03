@@ -48,7 +48,8 @@ function SearchByHostingType(data) {
     var result="";
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/search",
+        //url: "http://127.0.0.1:3000/search",
+        url: "https://yg7cplba88.execute-api.eu-west-2.amazonaws.com/dev/search",
         data: JSON.stringify(payload),
         dataType: 'json',
         headers: { 'Content-Type': 'application/json' },
