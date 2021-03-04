@@ -22,11 +22,15 @@ NOTE: Also an SSL Certificate for both domains should be manually created via AC
 
 4- **Lambda**: the lambda folder includes the [VPC lambda function](https://aws.amazon.com/blogs/aws/new-access-resources-in-a-vpc-from-your-lambda-functions/), meaning the lambda (placed in public subnets) will have its own security group, which will be used by the RDS to restrict access only to that function. 
 
-5. **API Gateway**: the API Gateway is created at this point, exposing the lambda function to the world. It also grants permissions to the lambda to be invoked by the API Gateway and finally returns a terraform output to facilitate to get the API Gateway invokation endpoint. 
+5- **API Gateway**: the API Gateway is created at this point, exposing the lambda function to the world. It also grants permissions to the lambda to be invoked by the API Gateway and finally returns a terraform output to facilitate to get the API Gateway invokation endpoint. 
 
-5- **RDS**: the relational database, hosted in the default VPC's private subnets.
+A couple of notes about API Gateway:
+- I had to manually change, in API Gateway > QueHostingRestAPI > API > Settings > Endpoint Configuration, the endopoint type from "Edge optimized" to "Regional" in order to avoid the API to be served by CloudFront, so to avoid extra costs. I did that before setting up the REGIONAL custom domain in terraform, which may be the piece of code I was missing
+- In order to use the custom domain with the regional configuration, we need to create (manually) a new certificate for our domain in our region, as the original certificate is always created in us-east-1. For this specific certificate, the "api" domain (api.queshosting.es) has been added to the certificate additional names
 
-6- **EC2**: this is not strictily necessary, as it is not part of the final solution, but it becames pretty handy to have an EC2 instance we can use to connect to our database to perform admin operations like:
+6- **RDS**: the relational database, hosted in the default VPC's private subnets.
+
+7- **EC2**: this is not strictily necessary, as it is not part of the final solution, but it becames pretty handy to have an EC2 instance we can use to connect to our database to perform admin operations like:
 
 ```
 # Dump local development database to use the management EC2 instance to populate RDS

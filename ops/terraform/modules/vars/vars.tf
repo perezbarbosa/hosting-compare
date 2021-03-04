@@ -31,7 +31,8 @@ output "hosted_zone_id" {
 }
 
 variable "domain_ssl_arn" {
-  default = "arn:aws:acm:us-east-1:865985078345:certificate/f30585ba-4e8b-4043-b2f8-9edb43ca1035"
+  description = "The Quehosting.es domain SSL certificate, managed by ACM"
+  default     = "arn:aws:acm:us-east-1:865985078345:certificate/f30585ba-4e8b-4043-b2f8-9edb43ca1035"
 }
 
 output "domain_ssl_arn" {
