@@ -52,7 +52,6 @@ function SearchByHostingType(data) {
         url: "https://api.quehosting.es/dev/search",
         data: JSON.stringify(payload),
         dataType: 'json',
-        headers: { 'Content-Type': 'application/json' },
         crossDomain: true,
         success:function(data) {
             //alert(JSON.stringify(data, null, 2));
@@ -103,7 +102,7 @@ function Normalize(item) {
 
 function GetHtmlForProviderLogo(provider) { 
     var provider_no_blanks = provider.replace(/\s/g, '');
-    return "<img src='img/" + provider_no_blanks + ".png' alt='" + provider + "' />"
+    return "<img src='img/" + provider_no_blanks.toLowerCase() + ".png' alt='" + provider + "' />"
  }
 
 function GetHtmlStartForAColumn() {

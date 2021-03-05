@@ -50,11 +50,15 @@ def init_return_variable():
     
     :return: the initialized return variable
     """
+    #
+    # ENABLING CORS
+    #  https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html#apigateway-responding-to-cors-preflight
     out = {}
     out['headers'] = {
         'Content-Type': 'application/json',
-        # TODO: This CORS policy is just for local testing. Remember to remove it for prod!
-        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Origin': 'https://quehosting.es',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST'
         }
     out['statusCode'] = 200
     out['body'] = {
