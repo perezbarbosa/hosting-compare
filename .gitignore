@@ -1,1 +1,4 @@
 local-env/.aws-sam/
+**/.terraform/
+**/terraform.tfstate
+**/terraform.tfstate.backup

@@ -25,7 +25,6 @@ DB_ATTRIBUTES = ['Currency',
     'Url',
     'WebNumber'] 
 
-
 def get_environment_variables():
     """
     Gets the environment variables
@@ -34,17 +33,12 @@ def get_environment_variables():
     """
     envs = {}
     try:
-        #envs['mysql_host'] = os.environ['MYSQL_HOST']
-        #envs['mysql_db'] = os.environ['MYSQL_DB']
-        #envs['mysql_user'] = os.environ['MYSQL_USER']
-        #envs['mysql_pass'] = os.environ['MYSQL_PASS']
-        envs['mysql_host'] = "mariadb"
-        envs['mysql_db'] = "quehosting" 
-        envs['mysql_user'] = "root"
-        envs['mysql_pass'] = "quehosting.es" 
+        envs['mysql_host'] = os.environ['MYSQL_HOST']
+        envs['mysql_db'] = os.environ['MYSQL_DB']
+        envs['mysql_user'] = os.environ['MYSQL_USER']
+        envs['mysql_pass'] = os.environ['MYSQL_PASS']
     except:
         print("ERROR: Unexpected error: Could not get environment")
-        pprint(sys.exc_info())
         sys.exit()
 
     return envs
@@ -56,11 +50,15 @@ def init_return_variable():
     
     :return: the initialized return variable
     """
+    #
+    # ENABLING CORS
+    #  https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html#apigateway-responding-to-cors-preflight
     out = {}
     out['headers'] = {
         'Content-Type': 'application/json',
-        # TODO: This CORS policy is just for local testing. Remember to remove it for prod!
-        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Origin': 'https://quehosting.es',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST'
         }
     out['statusCode'] = 200
     out['body'] = {
@@ -108,6 +106,8 @@ def validate_and_transform(data):
     data_ready = {}
     for key, value in data.items():
         # Only if has no special characters, we include it
+        print(format(value))
+        print(format(key))
         if value.isalnum():
             # MonthlyPrice is actually checking the PaymentMonthMin table attribute
             if key == 'MonthlyPrice':
@@ -133,12 +133,11 @@ def mysql_connect(host, db, user, password):
             host=host,
             user=user,
             password=password,
-            database=db
+            database=db,
+            connect_timeout=5
         )
     except pymysql.MySQLError as e:
-        print("ERROR: Unexpected error: Could not connect to the database LALALALA")
-        print(host, user, password, db)
-        pprint(sys.exc_info())
+        print("ERROR: Unexpected error: Could not connect to the database ", e)
         sys.exit()
     return conn
 
@@ -194,9 +193,6 @@ def prepare_query(data):
   
     sql = sql + " ORDER BY " + sort + " ASC"
 
-    pprint(sql)
-    pprint(args)
-
     return sql, args
 
 
@@ -240,12 +236,10 @@ def get_hosting_list(out, data):
     :return: The list of hosting plans
     """
 
-    envs = get_environment_variables()
-    conn = mysql_connect(envs['mysql_host'], envs['mysql_db'], envs['mysql_user'], envs['mysql_pass'])
     sql, args = prepare_query(data)
     try:
         # https://docs.aws.amazon.com/lambda/latest/dg/services-rds-tutorial.html#vpc-rds-deployment-pkg
-        with conn.cursor() as cursor:
+        with DB_CONN.cursor() as cursor:
             cursor.execute(sql, args)
             response = []
             for row in cursor:
@@ -259,11 +253,11 @@ def get_hosting_list(out, data):
 
         out['statusCode'] = '200'
 
-        pprint("HEADERS")
-        pprint(out['headers'])
+        #pprint("HEADERS")
+        #pprint(out['headers'])
     except:
         print("Unexpected error")
-        pprint(sys.exc_info())
+        #pprint(sys.exc_info())
         out['statusCode'] = 500
         out['body'] = {
             'message': 'Cannot query the database',
@@ -277,20 +271,27 @@ def handler(event, context):
     Queries the database to get the list of hosting plans based on the filter included in the body         
     """
 
+    print(format(event))
+
     out = init_return_variable()
 
-    ## Get data from json 
+    ## Get data from json - local env
     if event['body']:
-        pprint(event['body'])
+    #    pprint(event['body'])
         body = json.loads(event['body'])
-        pprint("[DEBUG] -- body here")
-        pprint(body)
-        pprint("[DEBUG] -- end body")
-
+    #    pprint("[DEBUG] -- body here")
+    #    pprint(body)
+    #    pprint("[DEBUG] -- end body")
     filter_data = validate_and_transform(body)
 
     out, response = get_hosting_list(out, filter_data) 
 
-    pprint(out)
+    #pprint(out)
 
     return out
+
+
+# Connection outside the handler as per AWS suggestion here
+# https://aws.amazon.com/premiumsupport/knowledge-center/lambda-rds-connection-timeouts/
+envs = get_environment_variables()
+DB_CONN = mysql_connect(envs['mysql_host'], envs['mysql_db'], envs['mysql_user'], envs['mysql_pass'])

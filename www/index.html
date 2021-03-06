@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -30,8 +30,18 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/carousel.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.5/examples/carousel/carousel.css" rel="stylesheet">
     <link href="css/hosting-compare.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80JXQ3H0D7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-80JXQ3H0D7');
+    </script>
   </head>
 
   <body>
@@ -73,7 +83,7 @@
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#523f78"/></svg>
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>¿Buscas un hosting para alojar tu proyecto?</h1>
+                <h1>¿Alojamiento web?</h1>
                 <p>¡No busques más y encuentra el <strong style="color: #cbbde2;">plan de hosting</strong> que mejor se adapta a tí usando nuestro <strong style="color: #cbbde2;">comparador</strong>!</p>
               </div>
             </div>
@@ -91,8 +101,8 @@
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#523f78"/></svg>
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>¿Demasiado complicado?</h1>
-                <p>Prueba a pasarte por nuestra sección de preguntas frecuentes. Tenemos respuestas <strong style="color: #cbbde2;">cortas y simples</strong> a las dudas más comunes</p>
+                <h1>¿Dudas?</h1>
+                <p>Prueba a pasarte por nuestra sección de preguntas frecuentes</p>
                 <p><a class="btn btn-lg btn-primary" href="faq.html" role="button">Preguntas frecuentes</a></p>
               </div>
             </div>
@@ -109,8 +119,8 @@
       </div>
 
       <div class="container">
-        <div class="row">
-          <div class="col-4">
+        <div class="row" id="row-main">
+          <div class="col-4" id="col-search"">
 
             <!-- FORM -->
             <div class='card mb-4 shadow-sm'>
@@ -227,8 +237,8 @@
 
             <!-- // FORM -->
           </div> <!-- // col FILTER-->
-          <div class="col-8">
-            <div id="test-result">Vaya, parece que no hay nada por aquí. Usa el filtro de la izquierda para encontrar tu nuevo plan de hosting.</div>
+          <div class="col-8" id="col-result">
+            <div id="search-result">Vaya, parece que no hay nada por aquí. Usa el filtro de la izquierda para encontrar tu nuevo plan de hosting.</div>
           </div>
 
         </div> <!-- // MAIN row -->
@@ -248,6 +258,7 @@
   
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="js/bootstrap.bundle.js"></script>
+    <script src="js/viewport.js"></script>
     <script src="js/hosting-compare.js"></script>
   </body>
 </html>

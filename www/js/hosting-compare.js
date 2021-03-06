@@ -48,14 +48,14 @@ function SearchByHostingType(data) {
     var result="";
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/search",
+        //url: "http://127.0.0.1:3000/search",
+        url: "https://api.quehosting.es/dev/search",
         data: JSON.stringify(payload),
         dataType: 'json',
-        headers: { 'Content-Type': 'application/json' },
         crossDomain: true,
         success:function(data) {
             //alert(JSON.stringify(data, null, 2));
-            var div_result=document.getElementById("test-result");
+            var div_result=document.getElementById("search-result");
             if (data.length == 0) {
                 // NO results
                 div_result.innerHTML="No se han encontrado resultados"
@@ -75,7 +75,7 @@ function SearchByHostingType(data) {
         },
         error:function (xhr, ajaxOptions, thrownError){
             alert(xhr);
-            var div_result=document.getElementById("test-result");
+            var div_result=document.getElementById("search-result");
             if(xhr.status==404) {
                 div_result.innerHTML = 'Item not found'
             }
@@ -102,7 +102,7 @@ function Normalize(item) {
 
 function GetHtmlForProviderLogo(provider) { 
     var provider_no_blanks = provider.replace(/\s/g, '');
-    return "<img src='img/" + provider_no_blanks + ".png' alt='" + provider + "' />"
+    return "<img src='img/" + provider_no_blanks.toLowerCase() + ".png' alt='" + provider + "' />"
  }
 
 function GetHtmlStartForAColumn() {
