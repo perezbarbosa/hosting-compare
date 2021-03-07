@@ -92,13 +92,14 @@ def insert_into_database(db, entry):
         currency = list(entry['Currency'].values())[0]
     if 'DatabaseNumber' in entry:
         database_number = list(entry['DatabaseNumber'].values())[0]
-    if 'DatabaseSize' in entry:
-        database_size = list(entry['DatabaseSize'].values())[0]
+    if 'DatabaseSizeGB' in entry:
+        database_size = list(entry['DatabaseSizeGB'].values())[0]
     if 'DiskSizeGB' in entry:
-        if 'Size' in entry['DiskSizeGB']:
-            disk_size = list(entry['DiskSizeGB']['Size'].values())[0]
-        if 'Type' in entry['DiskSizeGB']:
-            disk_type = list(entry['DiskType']['Tyoe'].values())[0]
+        disk_size_gb = list(entry['DiskSizeGB'].values())[0]
+        if 'Size' in disk_size_gb:
+            disk_size = list(disk_size_gb['Size'].values())[0]
+        if 'Type' in disk_size_gb:
+            disk_type = list(disk_size_gb['Type'].values())[0]
     if 'DomainIncluded' in entry:
         domain_included = list(entry['DomainIncluded'].values())[0]
     if 'DomainSubdomain' in entry:
