@@ -6,7 +6,7 @@ This terraform folder contains most of the necessary resources to host the proje
 
 ## Platform resources
 
-![Architecture](../pics/quehostinges.png "Architecture diagram")
+![Architecture](../../pics/quehostinges.png "Architecture diagram")
 
 The following resources have been created, and most of them are managed by terraform defined within this repo folder.
 
