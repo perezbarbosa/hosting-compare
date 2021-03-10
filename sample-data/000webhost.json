@@ -1,0 +1,61 @@
+[
+    {
+        "HostingId": {
+            "S": "000webhost_hostinggratis"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "1" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainsParked": {
+            "N": "1"
+        },
+        "HostingPlan": {
+            "S": "Hosting Gratis"
+        },
+        "HostingType": {
+            "S": "Web"
+         },
+        "Payment": {
+            "L": [
+                { "M": {
+                        "Months": { "N": "1" },
+                        "PriceMonth": { "N": "0" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "0"
+        },
+        "Provider": {
+            "S": "000webhost"
+        },
+        "SupportChat": {
+            "S": "false"
+        },
+        "SupportEmail": {
+            "S": "false"
+        },
+        "SupportTicket": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "false"
+        },
+        "Url": {
+            "S": "https://es.000webhost.com/"
+        },
+        "WebNumber": {
+            "S": "1"
+        }
+    }
+]

@@ -49,26 +49,26 @@
             "L": [
                 { "M": {
                         "Months": { "N": "12" },
-                        "PriceMonth": {"N": "3.66" },
+                        "PriceMonth": {"N": "3.73" },
                         "Save": {"N": "20"}
                     }
                 },
                 { "M": {
                     "Months": { "N": "24" },
-                    "PriceMonth": {"N": "3.44" },
+                    "PriceMonth": {"N": "3.5" },
                     "Save": {"N": "25"}
                     }
                 },
                 { "M": {
                     "Months": { "N": "36" },
-                    "PriceMonth": {"N": "3.20" },
+                    "PriceMonth": {"N": "3.26" },
                     "Save": {"N": "30"}
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "3.20"
+            "N": "3.26"
         },
         "Provider": {
             "S": "Hostinet"
@@ -154,14 +154,14 @@
                 },
                 { "M": {
                     "Months": { "N": "36" },
-                    "PriceMonth": {"N": "3.79" },
+                    "PriceMonth": {"N": "3.85" },
                     "Save": {"N": "30"}
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "3.79"
+            "N": "3.85"
         },
         "Provider": {
             "S": "Hostinet"
@@ -247,14 +247,14 @@
                 },
                 { "M": {
                     "Months": { "N": "36" },
-                    "PriceMonth": {"N": "4.42" },
+                    "PriceMonth": {"N": "4.43" },
                     "Save": {"N": "30"}
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "4.42"
+            "N": "4.43"
         },
         "Provider": {
             "S": "Hostinet"
@@ -340,14 +340,14 @@
                 },
                 { "M": {
                     "Months": { "N": "36" },
-                    "PriceMonth": {"N": "5.58" },
+                    "PriceMonth": {"N": "5.6" },
                     "Save": {"N": "30"}
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "5.58"
+            "N": "5.6"
         },
         "Provider": {
             "S": "Hostinet"

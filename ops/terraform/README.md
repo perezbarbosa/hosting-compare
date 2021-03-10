@@ -6,6 +6,8 @@ This terraform folder contains most of the necessary resources to host the proje
 
 ## Platform resources
 
+![Architecture](../../pics/quehostinges.png "Architecture diagram")
+
 The following resources have been created, and most of them are managed by terraform defined within this repo folder.
 
 1- **VPC**: the first approach was to create a new VPC with [intra subnets](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest#private-versus-intra-subnets) only. However, this added a problem, as the EC2 management instance coudln't be accessed, not even via SSM.

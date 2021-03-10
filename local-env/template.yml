@@ -26,7 +26,7 @@ Parameters:
     Default: HostingList
   MySQLHost:
     Type: String
-    Default: localhost
+    Default: mariadb
   MySQLDBName:
     Type: String
     Default: quehosting

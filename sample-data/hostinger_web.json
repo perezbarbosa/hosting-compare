@@ -13,14 +13,14 @@
             "S": "€"
         },
         "DatabaseNumber": {
-            "N": "1"
+            "N": "2"
         },
         "DatabaseSizeGB": {
             "N": "3"
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "10" },
+                "Size": { "N": "30" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -66,14 +66,14 @@
                 },
                 { "M": {
                         "Months": { "N": "48" },
-                        "PriceMonth": { "N": "0.80" },
-                        "Save": { "N": "90" }
+                        "PriceMonth": { "N": "0.99" },
+                        "Save": { "N": "70" }
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "0.80"
+            "N": "0.99"
         },
         "Provider": {
             "S": "Hostinger"
@@ -121,7 +121,7 @@
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "20" },
+                "Size": { "N": "100" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -167,14 +167,14 @@
                 },
                 { "M": {
                         "Months": { "N": "48" },
-                        "PriceMonth": { "N": "2.15" },
-                        "Save": { "N": "82" }
+                        "PriceMonth": { "N": "1.99" },
+                        "Save": { "N": "80" }
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "2.15"
+            "N": "1.99"
         },
         "Provider": {
             "S": "Hostinger"
@@ -198,7 +198,7 @@
             "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-web%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}"
         },
         "WebNumber": {
-            "N": "99999"
+            "N": "100"
         }
     },
     {
@@ -222,7 +222,7 @@
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "100" },
+                "Size": { "N": "200" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -268,14 +268,14 @@
                 },
                 { "M": {
                         "Months": { "N": "48" },
-                        "PriceMonth": { "N": "3.45" },
-                        "Save": { "N": "78" }
+                        "PriceMonth": { "N": "3.99" },
+                        "Save": { "N": "75" }
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "3.45"
+            "N": "3.99"
         },
         "Provider": {
             "S": "Hostinger"

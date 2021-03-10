@@ -1,6 +1,101 @@
 [
     {
         "HostingId": {
+            "S": "hostinger_wordpress_single"
+        },
+        "Backup": {
+            "S": "weekly"
+        },
+        "Cache": {
+            "S": "LiteSpeed"
+        },
+        "Currency": {
+            "S": "€"
+        },
+        "DatabaseNumber": {
+            "N": "2"
+        },
+        "DiskSizeGB": {
+            "M": {
+                "Size": { "N": "30" },
+                "Type": { "S": "SSD" }
+            }
+        },
+        "DomainIncluded": {
+            "S": "false"
+        },
+        "DomainSubdomain": {
+            "N": "100"
+        },
+        "EmailAccount": {
+            "N": "100"
+        },
+        "HostingPlan": {
+            "S": "Single"
+        },
+        "HostingType": {
+            "S": "Wordpress"
+        },
+        "Panel": {
+            "S": "cpanel"
+        },
+        "Payment": {
+            "L": [
+                { "M": {
+                    "Months": { "N": "1" },
+                    "PriceMonth": {"N": "11.95" }                
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "12" },
+                        "PriceMonth": {"N": "3.75" },
+                        "Save": { "N": "69" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "24" },
+                        "PriceMonth": { "N": "2.95" },
+                        "Save": { "N": "75" }
+                    }
+                },
+                { "M": {
+                        "Months": { "N": "48" },
+                        "PriceMonth": { "N": "1.99" },
+                        "Save": { "N": "75" }
+                    }
+                }
+            ]
+        },
+        "PaymentMonthMin": {
+            "N": "1.99"
+        },
+        "Provider": {
+            "S": "Hostinger"
+        },
+        "SupportChat": {
+            "S": "true"
+        },
+        "SupportEmail": {
+            "S": "true"
+        },
+        "SupportTicket": {
+            "S": "true"
+        },
+        "Ssh": {
+            "S": "false"
+        },
+        "Ssl": {
+            "S": "true"
+        },
+        "Url": {
+            "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-wordpress%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}&file_id=1402"
+        },
+        "WebNumber": {
+            "N": "1"
+        }
+    },
+    {
+        "HostingId": {
             "S": "hostinger_wordpress_starter"
         },
         "Backup": {
@@ -17,7 +112,7 @@
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "20" },
+                "Size": { "N": "100" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -112,7 +207,7 @@
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "100" },
+                "Size": { "N": "200" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -155,14 +250,14 @@
                 },
                 { "M": {
                         "Months": { "N": "48" },
-                        "PriceMonth": { "N": "7.45" },
-                        "Save": { "N": "74" }
+                        "PriceMonth": { "N": "9.99" },
+                        "Save": { "N": "58" }
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "7.45"
+            "N": "9.99"
         },
         "Provider": {
             "S": "Hostinger"
@@ -207,7 +302,7 @@
         },
         "DiskSizeGB": {
             "M": {
-                "Size": { "N": "140" },
+                "Size": { "N": "200" },
                 "Type": { "S": "SSD" }
             }
         },
@@ -250,14 +345,14 @@
                 },
                 { "M": {
                         "Months": { "N": "48" },
-                        "PriceMonth": { "N": "14.95" },
-                        "Save": { "N": "74" }
+                        "PriceMonth": { "N": "3.99" },
+                        "Save": { "N": "75" }
                     }
                 }
             ]
         },
         "PaymentMonthMin": {
-            "N": "14.95"
+            "N": "3.99"
         },
         "Provider": {
             "S": "Hostinger"
@@ -281,7 +376,7 @@
             "S": "https://www.hostg.xyz/aff_c?offer_id=6&aff_id=39478&url=https%3A%2F%2Fwww.hostinger.es%2Fhosting-wordpress%3Futm_source%3Daff{affiliate_id}%26utm_campaign%3D{offer_id}%26session%3D{transaction_id}&file_id=1402"
         },
         "WebNumber": {
-            "N": "300"
+            "N": "100"
         }
     }
 ]

@@ -13,15 +13,11 @@ $(document).ready(function() {
 });
 
 function SearchByHostingType(data) {
-    /*  https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/welcome.html#welcome_web
-    */
-
-    // Get values from formulary. We can use field.name as a switch-case
-    // TODO: We need to validate the form
+    //  https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/welcome.html#welcome_web
+    
     var hosting_type = "Todos"
     var monthly_price = 9999
     var domain_included = "Todos"
-//  var hosting_type = []
     $(data).each(function(i, field){
         switch(field.name) {
             case 'HostingType':
@@ -36,7 +32,6 @@ function SearchByHostingType(data) {
             default:
                 alert('ERROR getting params from form: '+field.name)
         }
- //       hosting_type = field.value
     });
 
     var payload={
@@ -52,9 +47,9 @@ function SearchByHostingType(data) {
         url: "https://api.quehosting.es/dev/search",
         data: JSON.stringify(payload),
         dataType: 'json',
+        //headers: { 'Content-Type': 'application/json' },
         crossDomain: true,
         success:function(data) {
-            //alert(JSON.stringify(data, null, 2));
             var div_result=document.getElementById("search-result");
             if (data.length == 0) {
                 // NO results
@@ -86,11 +81,6 @@ function SearchByHostingType(data) {
    });
 }
 
-/* Transforms the input value to a human friendly one
- *
- * Params:
- *   item: the pa
- */
 function Normalize(item) {
     if (item == "99999") {
         return "<strong>Ilimitado</strong>"
@@ -249,12 +239,15 @@ function GetHtmlSSL(ssl) {
     return html
 }
 
-/* Source: https://uxwing.com/
+/* Generates the "support type" HTML section 
  *
  * Params:
  *   support_list: a string which is actually a list of support types
  */
 function GetHtmlForSupport(support_list) {
+    if (! support_list) {
+        return ""
+    }
     var html = "<li style='margin-top: 10px;'>Soporte técnico</li><li>"
     var support = support_list.split(",")
     for (i = 0; i < support.length; i++) {
