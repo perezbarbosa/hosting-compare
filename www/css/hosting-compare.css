@@ -16,15 +16,3 @@ nav .navbar-nav li a:hover{
     font-weight: bold;
     text-transform: uppercase;
 }
-
-/* FAQS */
-
-h2 {
-    margin-top: 20px;
-    font-size: x-large;
-    font-weight: bold;
-}
-
-#faq div.collapse {
-    margin-bottom: 20px;
-}
