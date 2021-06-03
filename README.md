@@ -1,5 +1,12 @@
 # hosting-compare
 
+## Introduction
+
+This project is a PoC to play around with AWS Serverless architectures including SAM, API Gateway, Lambda Python functions, static code hosted in S3/CloudFront and a managed backend like RDS or DynamoDB.
+
+The goal was to develop everything in local using AWS SAM and automate as much as possible the "production" environment with terraform
+
+The project is currently live in https://quehosting.es
 
 ## Mockup
 https://wireframepro.mockflow.com/
